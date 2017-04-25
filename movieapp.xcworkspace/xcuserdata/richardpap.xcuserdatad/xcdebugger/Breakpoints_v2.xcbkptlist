@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "movieapp/MovieListViewController.swift"
+            timestampString = "513624104.860523"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "movieapp.MovieListViewController.__deallocating_deinit"
+                  moduleName = "movieapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/richardpap/ios/movieapp/movieapp/MovieListViewController.swift"
+                  timestampString = "513624668.16034"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "movieapp.MovieListViewController.init (style : __C.UITableViewStyle) -&gt; movieapp.MovieListViewController"
+                  moduleName = "movieapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/richardpap/ios/movieapp/movieapp/MovieListViewController.swift"
+                  timestampString = "513624668.167765"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "movieapp.MovieListViewController.__allocating_init (style : __C.UITableViewStyle) -&gt; movieapp.MovieListViewController"
+                  moduleName = "movieapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/richardpap/ios/movieapp/movieapp/MovieListViewController.swift"
+                  timestampString = "513624668.170225"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "movieapp.MovieListViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; movieapp.MovieListViewController"
+                  moduleName = "movieapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/richardpap/ios/movieapp/movieapp/MovieListViewController.swift"
+                  timestampString = "513624668.173258"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "78">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "movieapp.MovieListViewController.__allocating_init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; movieapp.MovieListViewController"
+                  moduleName = "movieapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/richardpap/ios/movieapp/movieapp/MovieListViewController.swift"
+                  timestampString = "513624668.175184"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "movieapp.MovieListViewController.__allocating_init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;movieapp.MovieListViewController&gt;"
+                  moduleName = "movieapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/richardpap/ios/movieapp/movieapp/MovieListViewController.swift"
+                  timestampString = "513624668.177179"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "movieapp.MovieListViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;movieapp.MovieListViewController&gt;"
+                  moduleName = "movieapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/richardpap/ios/movieapp/movieapp/MovieListViewController.swift"
+                  timestampString = "513624668.179667"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            symbolName = "UIViewAlertForUnsatisfiableConstraints"
+            moduleName = "">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UIViewAlertForUnsatisfiableConstraints"
+                  moduleName = "UIKit"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "movieapp/MovieListViewController.swift"
+            timestampString = "514661157.257689"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
