@@ -110,7 +110,7 @@ class TVListViewCell: UITableViewCell {
     }
     
     
-    func bind(list: [TVList], index: Int) {
+    func bind(_ list: [TVList], _ index: Int) {
         let media = list[index]
         
         if let imgPath = media.POSTER_PATH {
@@ -126,7 +126,7 @@ class TVListViewCell: UITableViewCell {
             let releaseDate = media.FIRST_AIR_DATE,
             let title = media.ORIGINAL_NAME,
             let overview = media.OVERVIEW {
-                dataGenres.text = getGenresText(genreIds: genreIds)
+                dataGenres.text = getGenresText(genreIds)
                 dataRate.text = String(describing: round(10*rate)/10)
                 dataYear.text = releaseDate.substring(to: (releaseDate.index(releaseDate.startIndex, offsetBy: 4)))
                 dataTitle.text = title
@@ -134,7 +134,7 @@ class TVListViewCell: UITableViewCell {
         }
     }
     
-    func getGenresText(genreIds: [Int]) -> String {
+    func getGenresText(_ genreIds: [Int]) -> String {
         var genresListText = ""
         var filteredArray = [GenresList]()
         

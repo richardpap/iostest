@@ -27,7 +27,7 @@ class PeopleListPresenter {
     
     func getData(){
         service.loadData(){ [weak self] data in
-            self?.listView?.setData(list: data)
+            self?.listView?.setData(data)
         }
     }
 }

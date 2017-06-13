@@ -19,7 +19,7 @@ class TVDetailsService {
         return instance
     }
     
-    func setId(tvId: Int) {
+    func setId(_ tvId: Int) {
         TV_ID = tvId;
     }
     

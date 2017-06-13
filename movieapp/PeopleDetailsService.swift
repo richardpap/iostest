@@ -19,7 +19,7 @@ class PeopleDetailsService {
         return instance
     }
     
-    func setId(peopleId: Int) {
+    func setId(_ peopleId: Int) {
         PEOPLE_ID = peopleId;
     }
     

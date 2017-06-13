@@ -27,12 +27,12 @@ class MovieDetailsPresenter {
     
     func getData(){
         service.loadData(){ [weak self] movieData in
-            self?.listView?.setData(data: movieData)
+            self?.listView?.setData(movieData)
         }
     }
     
-    func setId(id: Int) {
-        service.setId(movieId: id)
+    func setId(_ id: Int) {
+        service.setId(id)
     }
 }
 

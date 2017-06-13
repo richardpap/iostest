@@ -121,7 +121,7 @@ class DetailsView: UIView {
     }
 
     
-    func bind(movieData: MovieDetails) {
+    func bind(_ movieData: MovieDetails) {
         if let imgPath = movieData.BACKDROP_PATH {
             let imgURL = ImageloaderService.getInstance().IMG_HOST + ImageloaderService.getInstance().IMAGE_SIZE_LIST[2] + imgPath
             let imgResource = ImageResource(downloadURL: URL(string: imgURL)!, cacheKey: imgURL)

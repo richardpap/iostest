@@ -26,7 +26,7 @@ class MovieDetailsViewController: UIViewController {
         view.addSubview(detailsView)
         
         movieDetailsPresenter.attachView(view: self)
-        movieDetailsPresenter.setId(id: MOVIE_ID)
+        movieDetailsPresenter.setId(MOVIE_ID)
         movieDetailsPresenter.getData()
     }
 
@@ -36,14 +36,14 @@ class MovieDetailsViewController: UIViewController {
     }
 
     
-    func setData(data: MovieDetails) {
+    func setData(_ data: MovieDetails) {
         hideLoading()
         displayData(data)
     }
     
     
     func displayData(_ data: MovieDetails) {
-        detailsView.bind(movieData: data)
+        detailsView.bind(data)
         hideLoading()
     }
 

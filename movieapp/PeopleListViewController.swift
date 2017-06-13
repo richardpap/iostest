@@ -56,13 +56,13 @@ class PeopleListViewController: UITableViewController {
         
         if IS_DATA_LOADED {
             let index = indexPath.row
-            cell.bind(list: peopleData, index: index)
+            cell.bind(peopleData, index)
         }
         
         return cell
     }
     
-    func setData(list: [PeopleList]) {
+    func setData(_ list: [PeopleList]) {
         peopleData = list
         IS_DATA_LOADED = true
         tableView.reloadData()

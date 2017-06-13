@@ -19,7 +19,7 @@ class MovieDetailsService {
         return instance
     }
     
-    func setId(movieId: Int) {
+    func setId(_ movieId: Int) {
         MOVIE_ID = movieId;
     }
     

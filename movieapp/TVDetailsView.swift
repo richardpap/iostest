@@ -117,7 +117,7 @@ class TVDetailsView: UIView {
     }
     
     
-    func bind(tvData: TVDetails) {
+    func bind(_ tvData: TVDetails) {
         if let imgPath = tvData.BACKDROP_PATH {
             let imgURL = ImageloaderService.getInstance().IMG_HOST + ImageloaderService.getInstance().IMAGE_SIZE_LIST[2] + imgPath
             let imgResource = ImageResource(downloadURL: URL(string: imgURL)!, cacheKey: imgURL)

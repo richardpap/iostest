@@ -22,7 +22,7 @@ class PeopleDetailsViewController: UIViewController {
         view.addSubview(detailsView)
         
         tvDetailsPresenter.attachView(view: self)
-        tvDetailsPresenter.setId(id: PEOPLE_ID)
+        tvDetailsPresenter.setId(PEOPLE_ID)
         tvDetailsPresenter.getData()
 
         // Do any additional setup after loading the view.
@@ -33,7 +33,7 @@ class PeopleDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setData(data: PeopleDetails) {
+    func setData(_ data: PeopleDetails) {
         hideLoading()
         displayData(data)
     }

@@ -65,13 +65,13 @@ class MovieListViewController: UITableViewController {
         
         if IS_DATA_LOADED {
             let index = indexPath.row
-            cell.bind(list: moviesData, index: index)
+            cell.bind(moviesData, index)
         }
         
         return cell
     }
     
-    func setData(list: [MovieList]) {
+    func setData(_ list: [MovieList]) {
         moviesData = list
         IS_DATA_LOADED = true
         tableView.reloadData()

@@ -59,7 +59,7 @@ class PeopleListViewCell: UITableViewCell {
     }
     
     
-    func bind(list: [PeopleList], index: Int) {
+    func bind(_ list: [PeopleList], _ index: Int) {
         let media = list[index]
         
         if let imgPath = media.PROFILE_PATH {
@@ -74,11 +74,11 @@ class PeopleListViewCell: UITableViewCell {
             let name = media.NAME,
             let movieIds = media.KNOWN_FOR {
                 dataName.text = name
-                dataMovies.text = setMovies(movieIds: movieIds)
+                dataMovies.text = setMovies(movieIds)
         }
     }
     
-    func setMovies(movieIds: [KnownFor]) -> String {
+    func setMovies(_ movieIds: [KnownFor]) -> String {
         var moviesText = ""
         
         for item in movieIds {

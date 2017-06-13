@@ -59,13 +59,13 @@ class TVListViewController: UITableViewController {
         
         if IS_DATA_LOADED {
             let index = indexPath.row
-            cell.bind(list: tvData, index: index)
+            cell.bind(tvData, index)
         }
         
         return cell
     }
     
-    func setData(list: [TVList]) {
+    func setData(_ list: [TVList]) {
         tvData = list
         IS_DATA_LOADED = true
         tableView.reloadData()

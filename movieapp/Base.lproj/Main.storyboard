@@ -206,7 +206,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ovv-EE-a1a" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Movies" image="movie" id="emj-Wu-PER"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iKa-oz-GjB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iKa-oz-GjB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -225,7 +225,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rPR-6F-O9o" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="TV Shows" image="TV" id="fYB-wK-wWm"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BWB-TG-Qxi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BWB-TG-Qxi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -244,7 +244,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oRZ-Ie-a6G" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="People" image="people" id="T1S-9J-n4Z"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uNz-WG-XWT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uNz-WG-XWT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
