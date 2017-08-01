@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hMt-cI-W88">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hMt-cI-W88">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -194,6 +194,7 @@
                         <segue destination="Ovv-EE-a1a" kind="relationship" relationship="viewControllers" id="J5F-ql-b75"/>
                         <segue destination="rPR-6F-O9o" kind="relationship" relationship="viewControllers" id="yga-cc-Woo"/>
                         <segue destination="oRZ-Ie-a6G" kind="relationship" relationship="viewControllers" id="WmK-7z-ags"/>
+                        <segue destination="FYh-Pv-U7C" kind="relationship" relationship="viewControllers" id="8ZI-qP-djw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -206,7 +207,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ovv-EE-a1a" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Movies" image="movie" id="emj-Wu-PER"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iKa-oz-GjB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iKa-oz-GjB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -225,7 +226,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rPR-6F-O9o" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="TV Shows" image="TV" id="fYB-wK-wWm"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BWB-TG-Qxi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BWB-TG-Qxi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -244,7 +245,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oRZ-Ie-a6G" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="People" image="people" id="T1S-9J-n4Z"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uNz-WG-XWT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uNz-WG-XWT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -257,8 +258,63 @@
             </objects>
             <point key="canvasLocation" x="1244" y="759"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="Kpw-lH-0nF">
+            <objects>
+                <tableViewController id="vCD-hY-3PH" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="24T-8v-n9Q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="xeY-lv-ybR">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="NoC-z5-VvO">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NoC-z5-VvO" id="tTv-19-J7n">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vCD-hY-3PH" id="2Wk-Mn-coG"/>
+                            <outlet property="delegate" destination="vCD-hY-3PH" id="zap-A6-hJq"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="VUV-nE-4M9"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zg1-fu-sTK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2183.1999999999998" y="1454.1229385307347"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="0o3-XD-80M">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FYh-Pv-U7C" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" image="Search" id="Xnm-N3-9rh"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lDq-Z1-f9z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vCD-hY-3PH" kind="relationship" relationship="rootViewController" id="FpS-3v-uh1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1kJ-oA-36K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1244" y="1453.2233883058473"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Search" width="36" height="36"/>
         <image name="TV" width="48" height="48"/>
         <image name="movie" width="48" height="48"/>
         <image name="people" width="48" height="48"/>
