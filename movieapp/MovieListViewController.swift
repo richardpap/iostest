@@ -23,6 +23,8 @@ class MovieListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNavigationBarItems()
+        
         tableView.register(MovieListViewCell.self, forCellReuseIdentifier: "MovieCell")
         tableView.rowHeight = 180
         tableView.isHidden = true
@@ -39,6 +41,10 @@ class MovieListViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func setNavigationBarItems() {
+        self.navigationItem.title = "Movies"
     }
     
     override func didReceiveMemoryWarning() {

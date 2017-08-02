@@ -20,18 +20,24 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNavigationBarItems()
+        
         tableView.register(SearchListViewCell.self, forCellReuseIdentifier: "SearchCell")
         tableView.rowHeight = 180
-        tableView.isHidden = true
+        //tableView.isHidden = true
         
         searchPresenter.attachView(view: self)
-        searchPresenter.getDatalist()
+        searchPresenter.getDatalist("matrix")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func setNavigationBarItems() {
+        self.navigationItem.title = "Search"
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,7 +76,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
         keywords?.replacingOccurrences(of: " ", with: "+")
         
         if let keywords = keywords {
-            searchPresenter.setKeywords(keywords)
+            
         }
     }
     
@@ -80,7 +86,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
         IS_DATA_LOADED = true
         tableView.reloadData()
         hideLoading()
-        tableView.isHidden = false
+        //tableView.isHidden = false
     }
 
     /*

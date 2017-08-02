@@ -111,27 +111,32 @@ class SearchListViewCell: UITableViewCell {
     
     
     func bind(_ list: [SearchListData], _ index: Int) {
-        let media = list[index]
         
-        if let imgPath = media.POSTER_PATH {
-            let imgURL = ImageloaderService.getInstance().IMG_HOST + ImageloaderService.getInstance().IMAGE_SIZE_LIST[0] + imgPath
-            let imgResource = ImageResource(downloadURL: URL(string: imgURL)!, cacheKey: imgURL)
-            dataImage.kf.setImage(with: imgResource)
-            dataImage.contentMode = .scaleAspectFill
-        }
+
+            let media = list[index]
+            
+            if let imgPath = media.POSTER_PATH {
+                let imgURL = ImageloaderService.getInstance().IMG_HOST + ImageloaderService.getInstance().IMAGE_SIZE_LIST[0] + imgPath
+                let imgResource = ImageResource(downloadURL: URL(string: imgURL)!, cacheKey: imgURL)
+                dataImage.kf.setImage(with: imgResource)
+                dataImage.contentMode = .scaleAspectFill
+            }
+            
+            if
+                let genreIds = media.GENRE_IDS,
+                let rate = media.VOTE_AVERAGE,
+                let releaseDate = media.RELEASE_DATE,
+                let title = media.ORIGINAL_TITLE,
+                let overview = media.OVERVIEW {
+                dataGenres.text = getGenresText(genreIds)
+                dataRate.text = String(describing: round(10*rate)/10)
+                dataYear.text = releaseDate.substring(to: (releaseDate.index(releaseDate.startIndex, offsetBy: 4)))
+                dataTitle.text = title
+                dataDescription.text = overview
+            }
+   
         
-        if
-            let genreIds = media.GENRE_IDS,
-            let rate = media.VOTE_AVERAGE,
-            let releaseDate = media.RELEASE_DATE,
-            let title = media.ORIGINAL_TITLE,
-            let overview = media.OVERVIEW {
-            dataGenres.text = getGenresText(genreIds)
-            dataRate.text = String(describing: round(10*rate)/10)
-            dataYear.text = releaseDate.substring(to: (releaseDate.index(releaseDate.startIndex, offsetBy: 4)))
-            dataTitle.text = title
-            dataDescription.text = overview
-        }
+        
     }
     
     func getGenresText(_ genreIds: [Int]) -> String {

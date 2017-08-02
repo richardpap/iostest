@@ -25,14 +25,16 @@ class SearchPresenter {
         listView = nil
     }
     
-    func setKeywords(_ keywords: String) {
+    func getDatalist(_ keywords: String) {
         service.setKeywords(keywords)
-    }
-    
-    func getDatalist(){
+        
         service.loadData(){ [weak self] data in
             self?.listView?.setData(data)
         }
+    }
+    
+    func getDatalist(){
+        
     }
 }
 

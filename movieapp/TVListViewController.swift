@@ -14,9 +14,12 @@ class TVListViewController: UITableViewController {
     var tvData = [TVList]()
     
     private let tvListPresenter = TVListPresenter(service: TVListService.getInstance())
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setNavigationBarItems()
         
         tableView.register(TVListViewCell.self, forCellReuseIdentifier: "TVCell")
         tableView.rowHeight = 180
@@ -33,6 +36,10 @@ class TVListViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func setNavigationBarItems() {
+        self.navigationItem.title = "TV Shows"
     }
 
     override func didReceiveMemoryWarning() {

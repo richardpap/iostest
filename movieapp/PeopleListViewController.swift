@@ -18,6 +18,8 @@ class PeopleListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNavigationBarItems()
+        
         tableView.register(PeopleListViewCell.self, forCellReuseIdentifier: "PeopleCell")
         tableView.rowHeight = 180
         tableView.isHidden = true
@@ -31,6 +33,11 @@ class PeopleListViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    
+    func setNavigationBarItems() {
+        self.navigationItem.title = "People"
     }
 
     override func didReceiveMemoryWarning() {
