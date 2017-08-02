@@ -8,10 +8,24 @@
 
 import UIKit
 
-class SearchViewController: UITableViewController {
-
+class SearchViewController: UITableViewController, UISearchBarDelegate {
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    private let searchPresenter = SearchPresenter(service: SearchService.getInstance())
+    
+    var IS_DATA_LOADED = false
+    var searchData = [SearchListData]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.register(SearchListViewCell.self, forCellReuseIdentifier: "SearchCell")
+        tableView.rowHeight = 180
+        tableView.isHidden = true
+        
+        searchPresenter.attachView(view: self)
+        searchPresenter.getDatalist()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -29,12 +43,44 @@ class SearchViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 20
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell: SearchListViewCell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath ) as! SearchListViewCell
+        
+        if IS_DATA_LOADED {
+            let index = indexPath.row
+            cell.bind(searchData, index)
+        }
+        
+        return cell
+    }
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let keywords = searchBar.text
+        keywords?.replacingOccurrences(of: " ", with: "+")
+        
+        if let keywords = keywords {
+            searchPresenter.setKeywords(keywords)
+        }
+    }
+    
+    
+    func setData(_ list: [SearchListData]) {
+        searchData = list
+        IS_DATA_LOADED = true
+        tableView.reloadData()
+        hideLoading()
+        tableView.isHidden = false
     }
 
     /*

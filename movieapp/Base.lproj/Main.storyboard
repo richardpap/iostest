@@ -258,21 +258,21 @@
             </objects>
             <point key="canvasLocation" x="1244" y="759"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="Kpw-lH-0nF">
             <objects>
-                <tableViewController id="vCD-hY-3PH" sceneMemberID="viewController">
+                <tableViewController id="vCD-hY-3PH" customClass="SearchViewController" customModule="movieapp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="24T-8v-n9Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="xeY-lv-ybR">
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="xeY-lv-ybR" customClass="SearchListTableViewCell">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="NoC-z5-VvO">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchCell" id="NoC-z5-VvO">
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NoC-z5-VvO" id="tTv-19-J7n">
@@ -287,6 +287,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="VUV-nE-4M9"/>
+                    <connections>
+                        <outlet property="searchBar" destination="xeY-lv-ybR" id="VPW-TY-JSg"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zg1-fu-sTK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

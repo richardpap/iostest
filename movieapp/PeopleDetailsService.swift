@@ -30,7 +30,6 @@ class PeopleDetailsService {
         request.responseObject{(response: DataResponse<PeopleDetails>) in
             if let data = response.result.value {
                 callBack(data)
-                
             }
         }
     }
