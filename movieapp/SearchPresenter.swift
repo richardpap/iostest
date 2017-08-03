@@ -32,9 +32,5 @@ class SearchPresenter {
             self?.listView?.setData(data)
         }
     }
-    
-    func getDatalist(){
-        
-    }
 }
 

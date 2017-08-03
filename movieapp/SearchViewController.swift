@@ -8,32 +8,60 @@
 
 import UIKit
 
-class SearchViewController: UITableViewController, UISearchBarDelegate {
+class SearchViewController: UITableViewController, UISearchResultsUpdating {
     
-    @IBOutlet weak var searchBar: UISearchBar!
     private let searchPresenter = SearchPresenter(service: SearchService.getInstance())
     
     var IS_DATA_LOADED = false
     var searchData = [SearchListData]()
+    var searchController = UISearchController()
+    var dataListController = UITableViewController()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setNavigationBarItems()
+        setSearchController()
         
         tableView.register(SearchListViewCell.self, forCellReuseIdentifier: "SearchCell")
         tableView.rowHeight = 180
         //tableView.isHidden = true
         
-        searchPresenter.attachView(view: self)
-        searchPresenter.getDatalist("matrix")
+        setPresenter()
+        
+        
+        
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        //update results tableview here
+        let keywords = self.searchController.searchBar.text
+        
+        if let keywords = keywords {
+            searchPresenter.getDatalist(keywords)
+        }
+    }
+    
+    func setSearchController() {
+        //self.dataListController.tableView.dataSource = self
+        //self.dataListController.tableView.delegate = self
+        self.searchController.searchBar.returnKeyType = UIReturnKeyType.done
+        self.searchController = UISearchController(searchResultsController: self.dataListController)
+        self.tableView.tableHeaderView = self.searchController.searchBar
+        self.searchController.searchResultsUpdater = self
+    }
+    
+    func setPresenter() {
+        searchPresenter.attachView(view: self)
+        searchPresenter.getDatalist("matrix")
     }
     
     func setNavigationBarItems() {
