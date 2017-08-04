@@ -41,11 +41,6 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
     
     
     func setSearchController() {
-        //dataListController.tableView.dataSource = self
-        //dataListController.tableView.delegate = self
-        //self.searchController.searchBar.returnKeyType = UIReturnKeyType.done
-        //searchController = UISearchController(searchResultsController: self.dataListController)
-        
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         tableView.tableHeaderView = searchController.searchBar
@@ -55,7 +50,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
     
     func setPresenter() {
         searchPresenter.attachView(view: self)
-        //searchPresenter.getDatalist("")
+        searchPresenter.getDatalist("alien")
     }
     
     
@@ -83,17 +78,15 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
         let cell: SearchListViewCell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath ) as! SearchListViewCell
         let index = indexPath.row
         
-        if IS_DATA_LOADED && searchData.count > 0 && index > 0 {
-            cell.bind(searchData, index)
-        }
+        cell.bind(searchData, index)
         
         return cell
     }
     
     
     func setData(_ list: [SearchListData]) {
-        self.dataListController.tableView.dataSource = nil
-        self.dataListController.tableView.delegate = nil
+        //tableView.dataSource = nil
+        //tableView.delegate = nil
         
         searchData = list
         IS_DATA_LOADED = true
