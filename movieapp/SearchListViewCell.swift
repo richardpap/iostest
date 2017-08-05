@@ -109,6 +109,10 @@ class SearchListViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+
+    }
+    
     
     func bind(_ list: [SearchListData], _ index: Int) {
         

@@ -8,39 +8,57 @@
 
 import UIKit
 
-class SearchViewController: UITableViewController, UISearchResultsUpdating {
+class SearchViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
-    private let searchPresenter = SearchPresenter(service: SearchService.getInstance())
+    
     private var IS_DATA_LOADED = false
+    private let searchPresenter = SearchPresenter(service: SearchService.getInstance())
     private var searchData = [SearchListData]()
-    private var searchController = UISearchController(searchResultsController: nil)
-    private var dataListController = UITableViewController()
+    private var searchController = UISearchController()
+    private var resultsController = UITableViewController()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBarItems()
         setSearchController()
-        tableView.register(SearchListViewCell.self, forCellReuseIdentifier: "SearchCell")
-        tableView.rowHeight = 180
+        resultsController.tableView.register(SearchListViewCell.self, forCellReuseIdentifier: "SearchCell")
+        resultsController.tableView.rowHeight = 180
         //tableView.isHidden = true
         setPresenter()
     }
     
     
-    func updateSearchResults(for searchController: UISearchController) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         //update results tableview here
         let keywords = self.searchController.searchBar.text
         
         if let keywords = keywords {
-            if keywords.characters.count > 3 {
+            if keywords.characters.count > 0 {
+                print("Requesting response from DB :: 01")
                 searchPresenter.getDatalist(keywords)
             }
         }
     }
     
     
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        
+        resultsController.tableView.reloadData()
+    }
+    
+
+    
     func setSearchController() {
+        resultsController.tableView.dataSource = self
+        resultsController.tableView.delegate = self
+        
+        searchController = UISearchController(searchResultsController: resultsController)
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         tableView.tableHeaderView = searchController.searchBar
@@ -55,7 +73,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
     
     
     func setNavigationBarItems() {
-        self.navigationItem.title = "Search"
+        navigationItem.title = "Search"
     }
 
     
@@ -70,31 +88,37 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("Search data length is \(searchData.count)")
+        
+        if searchController.isActive {
+            return searchData.count
+        }
+        
         return searchData.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: SearchListViewCell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath ) as! SearchListViewCell
+        let cell: SearchListViewCell = resultsController.tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath ) as! SearchListViewCell
         let index = indexPath.row
+        
+        print("Filling up cell at index \(index)")
         
         cell.bind(searchData, index)
         
         return cell
     }
+
     
     
     func setData(_ list: [SearchListData]) {
-        //tableView.dataSource = nil
-        //tableView.delegate = nil
+        searchData.removeAll()
+        resultsController.tableView.reloadData()
         
         searchData = list
-        IS_DATA_LOADED = true
-        tableView.reloadData()
-        hideLoading()
-        
-        print("Reloading the view \(IS_DATA_LOADED)")
-        //tableView.isHidden = false
+        print("Data recived :: 02")
+        resultsController.tableView.reloadData()
+        print("Reloading tableview :: 03")
     }
 
 
