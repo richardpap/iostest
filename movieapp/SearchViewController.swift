@@ -34,6 +34,11 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+    }
+    
+    
+    func updateSearchResults(for searchController: UISearchController) {
         //update results tableview here
         let keywords = self.searchController.searchBar.text
         
@@ -43,11 +48,6 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
                 searchPresenter.getDatalist(keywords)
             }
         }
-    }
-    
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        
         
         resultsController.tableView.reloadData()
     }
