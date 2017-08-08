@@ -134,14 +134,33 @@ class SearchListViewCell: UITableViewCell {
                 let overview = media.OVERVIEW {
                 dataGenres.text = getGenresText(genreIds)
                 dataRate.text = String(describing: round(10*rate)/10)
-                dataYear.text = releaseDate.substring(to: (releaseDate.index(releaseDate.startIndex, offsetBy: 4)))
-                dataTitle.text = title
-                dataDescription.text = overview
+                dataYear.text = checkDate(releaseDate)
+                dataTitle.text = checkData(title)
+                dataDescription.text = checkData(overview)
             }
    
         
         
     }
+    
+    
+    func checkData(_ data: String) -> String {
+        if data.characters.count > 0 {
+            return data
+        } else {
+            return "No Data"
+        }
+    }
+    
+    
+    func checkDate(_ data: String) -> String {
+        if data.characters.count > 3 {
+            return data.substring(to: (data.index(data.startIndex, offsetBy: 4)))
+        } else {
+            return "????"
+        }
+    }
+    
     
     func getGenresText(_ genreIds: [Int]) -> String {
         var genresListText = ""
