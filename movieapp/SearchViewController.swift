@@ -63,6 +63,8 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
         searchController.dimsBackgroundDuringPresentation = false
         tableView.tableHeaderView = searchController.searchBar
         definesPresentationContext = true
+        
+        searchController.searchBar.keyboardType = .emailAddress
     }
     
     
