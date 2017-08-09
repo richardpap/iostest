@@ -16,6 +16,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     private var searchData = [SearchListData]()
     private var searchController = UISearchController()
     private var resultsController = UITableViewController()
+    private var shouldShowSearchResults = false
     
     
     override func viewDidLoad() {
@@ -24,35 +25,12 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
         setSearchController()
         resultsController.tableView.register(SearchListViewCell.self, forCellReuseIdentifier: "SearchCell")
         resultsController.tableView.rowHeight = 180
+        tableView.rowHeight = 180
         //tableView.isHidden = true
+        
+        searchController.searchBar.delegate = self
         setPresenter()
     }
-    
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-    }
-    
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        //update results tableview here
-        let keywords = self.searchController.searchBar.text
-        
-        if let keywords = keywords {
-            if keywords.characters.count > 0 {
-                print("Requesting response from DB :: 01")
-                searchPresenter.getDatalist(keywords)
-            }
-        }
-        
-        resultsController.tableView.reloadData()
-    }
-    
-
     
     func setSearchController() {
         resultsController.tableView.dataSource = self
@@ -114,9 +92,6 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     
     func setData(_ list: [SearchListData]) {
-        searchData.removeAll()
-        resultsController.tableView.reloadData()
-        
         searchData = list
         print("Data recived :: 02")
         resultsController.tableView.reloadData()
@@ -133,5 +108,48 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("Text changed")
+        //tableView.contentOffset = CGPoint.zero
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("Search clicked")
+        searchData.removeAll()
+        
+        //update results tableview here
+        let keywords = self.searchController.searchBar.text
+        
+        if let keywords = keywords {
+            if keywords.characters.count > 0 {
+                print("Requesting response from DB :: 01")
+                searchPresenter.getDatalist(keywords)
+            }
+        }
+        
+        //dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        print("Focuuus")
+        shouldShowSearchResults = true
+        resultsController.tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print("Game Over")
+        shouldShowSearchResults = false
+        tableView.dataSource = resultsController.tableView.dataSource
+        tableView.reloadData()
+    }
+    
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        print("Update search results stuff")
+    }
 
 }
