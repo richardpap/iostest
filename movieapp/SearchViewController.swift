@@ -13,18 +13,22 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     private var IS_DATA_LOADED = false
     private let searchPresenter = SearchPresenter(service: SearchService.getInstance())
-    private var searchData = [SearchListData]()
     private var searchController = UISearchController()
     private var resultsController = UITableViewController()
-    private var shouldShowSearchResults = false
+    private var searchData = [SearchListData]() {
+        didSet {
+            print("The value of searchData changed from \(oldValue) to \(searchData)")
+        }
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBarItems()
         setSearchController()
-        resultsController.tableView.register(SearchListViewCell.self, forCellReuseIdentifier: "SearchCell")
+        resultsController.tableView.register(SearchListViewCell.self, forCellReuseIdentifier: "SearchResultsCell")
         resultsController.tableView.rowHeight = 180
+        tableView.register(SearchListViewCell.self, forCellReuseIdentifier: "SearchCell")
         tableView.rowHeight = 180
         //tableView.isHidden = true
         
@@ -79,14 +83,19 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: SearchListViewCell = resultsController.tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath ) as! SearchListViewCell
-        let index = indexPath.row
         
+        let index = indexPath.row
         print("Filling up cell at index \(index)")
         
-        cell.bind(searchData, index)
-        
-        return cell
+        if searchController.isActive {
+            let cell: SearchListViewCell = resultsController.tableView.dequeueReusableCell(withIdentifier: "SearchResultsCell", for: indexPath ) as! SearchListViewCell
+            cell.bind(searchData, index)
+            return cell
+        } else {
+            let cell: SearchListViewCell = self.tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath ) as! SearchListViewCell
+            cell.bind(searchData, index)
+            return cell
+        }
     }
 
     
@@ -136,13 +145,11 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         print("Focuuus")
-        shouldShowSearchResults = true
         resultsController.tableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         print("Game Over")
-        shouldShowSearchResults = false
         tableView.dataSource = resultsController.tableView.dataSource
         tableView.reloadData()
     }
