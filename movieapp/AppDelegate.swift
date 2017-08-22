@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let color = UIColor.blue;
         UITabBar.appearance().tintColor = color;
         
-        window?.rootViewController = UITabBarController()
+        window?.backgroundColor = UIColor.white
+        window?.rootViewController = PreloaderViewController()
         
         return true
     }
