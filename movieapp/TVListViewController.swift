@@ -83,17 +83,12 @@ class TVListViewController: UITableViewController {
     
     // called when the cell is selected.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "TVDetailsView", sender: self)
+        let VC = TVDetailsViewController()
+        VC.TV_ID = tvData[indexPath.row].ID!
+        self.present(VC, animated: true, completion: nil)
     }
     
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {        
-        if (segue.identifier == "TVDetailsView") {
-            let VC = segue.destination as! TVDetailsViewController
-            if let indexpath = self.tableView.indexPathForSelectedRow {
-                VC.TV_ID = tvData[indexpath.row].ID!
-            }
-        }
-    }
+    //override func prepare(for segue: UIStoryboardSegue, sender: Any?) { }
 }

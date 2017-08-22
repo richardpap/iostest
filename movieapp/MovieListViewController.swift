@@ -88,17 +88,12 @@ class MovieListViewController: UITableViewController {
     
     // called when the cell is selected.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "MovieDetailsView", sender: self)
+        let VC = MovieDetailsViewController()
+        VC.MOVIE_ID = moviesData[indexPath.row].ID!
+        self.present(VC, animated: true, completion: nil)
     }
     
     
      // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {        
-        if (segue.identifier == "MovieDetailsView") {
-            let VC = segue.destination as! MovieDetailsViewController
-            if let indexpath = self.tableView.indexPathForSelectedRow {
-                VC.MOVIE_ID = moviesData[indexpath.row].ID!
-            }
-        }
-     }
+     //override func prepare(for segue: UIStoryboardSegue, sender: Any?) { }
 }

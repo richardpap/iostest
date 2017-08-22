@@ -30,7 +30,6 @@ class PreloaderViewController: UIViewController {
     
     func loadApp() {
         hideLoading()
-        
         //let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         //let nextViewController = storyBoard.instantiateViewController(withIdentifier: "Main") as UIViewController
         self.present(TabBarController(), animated:true, completion:nil)

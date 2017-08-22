@@ -80,17 +80,12 @@ class PeopleListViewController: UITableViewController {
 
     // called when the cell is selected.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "PeopleDetailsView", sender: self)
+        let VC = PeopleDetailsViewController()
+        VC.PEOPLE_ID = peopleData[indexPath.row].ID!
+        self.present(VC, animated: true, completion: nil)
     }
     
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "PeopleDetailsView") {
-            let VC = segue.destination as! PeopleDetailsViewController
-            if let indexpath = self.tableView.indexPathForSelectedRow {
-                VC.PEOPLE_ID = peopleData[indexpath.row].ID!
-            }
-        }
-    }
+    //override func prepare(for segue: UIStoryboardSegue, sender: Any?) { }
 }

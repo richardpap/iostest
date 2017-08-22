@@ -28,6 +28,8 @@ class MovieDetailsViewController: UIViewController {
         movieDetailsPresenter.attachView(view: self)
         movieDetailsPresenter.setId(MOVIE_ID)
         movieDetailsPresenter.getData()
+        
+        print("Selected ID::: \(self.MOVIE_ID)")
     }
 
     override func didReceiveMemoryWarning() {
