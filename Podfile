@@ -6,10 +6,11 @@ target 'movieapp' do
     use_frameworks!
 
     # Pods for movieapp
-    pod 'Alamofire', '~> 4.4'
-    pod 'Kingfisher', '~> 3.0'
-    pod 'ObjectMapper', '~> 2.2'
-    pod 'AlamofireObjectMapper', '~> 4.0'
-    pod 'PureLayout', '~> 3.0.2'
-
+    pod 'Alamofire'
+    pod 'Kingfisher'
+    pod 'ObjectMapper'
+    pod 'AlamofireObjectMapper'
+    pod 'PureLayout'
+    pod 'RxSwift'
+    pod 'RxCocoa'
 end

@@ -14,6 +14,7 @@
 		E00A97CF1EA7DA9A00077351 /* MovieListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00A97CE1EA7DA9A00077351 /* MovieListService.swift */; };
 		E00A97D11EA7FD4F00077351 /* MovieDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00A97D01EA7FD4F00077351 /* MovieDetailsService.swift */; };
 		E00A97D31EA7FE8B00077351 /* MovieDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00A97D21EA7FE8B00077351 /* MovieDetailsPresenter.swift */; };
+		E014CDDC1F4C1B2500A1C4D5 /* SearchTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E014CDDB1F4C1B2500A1C4D5 /* SearchTestController.swift */; };
 		E021E4281EA38A5D00C1825A /* MovieDetailGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021E4271EA38A5D00C1825A /* MovieDetailGenre.swift */; };
 		E021E42A1EA5225500C1825A /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021E4291EA5225500C1825A /* Loading.swift */; };
 		E02A48CB1F311E8800F16EEB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02A48CA1F311E8700F16EEB /* SearchViewController.swift */; };
@@ -28,6 +29,9 @@
 		E03976091E97939E00AA8EC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E03976071E97939E00AA8EC4 /* Main.storyboard */; };
 		E039760B1E97939E00AA8EC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E039760A1E97939E00AA8EC4 /* Assets.xcassets */; };
 		E039760E1E97939E00AA8EC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E039760C1E97939E00AA8EC4 /* LaunchScreen.storyboard */; };
+		E04C36301F4C27F700C69655 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E04C362F1F4C27F700C69655 /* RxCocoa.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		E04C36321F4C27FD00C69655 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E04C36311F4C27FD00C69655 /* RxSwift.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		E04C36361F4C5D4300C69655 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04C36351F4C5D4300C69655 /* TabBarController.swift */; };
 		E089A8231EABA8A000C73535 /* TVDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089A8221EABA8A000C73535 /* TVDetailsViewController.swift */; };
 		E089A8251EABA8B400C73535 /* PeopleDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089A8241EABA8B400C73535 /* PeopleDetailsViewController.swift */; };
 		E089A8271EABA9A600C73535 /* TVDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089A8261EABA9A600C73535 /* TVDetailsPresenter.swift */; };
@@ -73,6 +77,7 @@
 		E00A97CE1EA7DA9A00077351 /* MovieListService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListService.swift; sourceTree = "<group>"; };
 		E00A97D01EA7FD4F00077351 /* MovieDetailsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsService.swift; sourceTree = "<group>"; };
 		E00A97D21EA7FE8B00077351 /* MovieDetailsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsPresenter.swift; sourceTree = "<group>"; };
+		E014CDDB1F4C1B2500A1C4D5 /* SearchTestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTestController.swift; sourceTree = "<group>"; };
 		E021E4271EA38A5D00C1825A /* MovieDetailGenre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailGenre.swift; sourceTree = "<group>"; };
 		E021E4291EA5225500C1825A /* Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		E02A48CA1F311E8700F16EEB /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +94,9 @@
 		E039760A1E97939E00AA8EC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E039760D1E97939E00AA8EC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E039760F1E97939E00AA8EC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E04C362F1F4C27F700C69655 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "Pods/../build/Debug-iphoneos/RxCocoa/RxCocoa.framework"; sourceTree = "<group>"; };
+		E04C36311F4C27FD00C69655 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Pods/../build/Debug-iphoneos/RxSwift/RxSwift.framework"; sourceTree = "<group>"; };
+		E04C36351F4C5D4300C69655 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E089A8221EABA8A000C73535 /* TVDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVDetailsViewController.swift; sourceTree = "<group>"; };
 		E089A8241EABA8B400C73535 /* PeopleDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleDetailsViewController.swift; sourceTree = "<group>"; };
 		E089A8261EABA9A600C73535 /* TVDetailsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVDetailsPresenter.swift; sourceTree = "<group>"; };
@@ -130,6 +138,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E04C36321F4C27FD00C69655 /* RxSwift.framework in Frameworks */,
+				E04C36301F4C27F700C69655 /* RxCocoa.framework in Frameworks */,
 				E0332FCE1EA906300027245D /* PureLayout.framework in Frameworks */,
 				E0F2A75E1E9D6DFD00ADC24F /* AlamofireObjectMapper.framework in Frameworks */,
 				E0F2A75F1E9D6DFD00ADC24F /* ObjectMapper.framework in Frameworks */,
@@ -154,6 +164,8 @@
 		53702A7903AC2D1B7939085E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E04C36311F4C27FD00C69655 /* RxSwift.framework */,
+				E04C362F1F4C27F700C69655 /* RxCocoa.framework */,
 				E0332FCD1EA906300027245D /* PureLayout.framework */,
 				E0C2C2C61E9C2232003C393A /* Kingfisher.framework */,
 				E0C2C2BB1E9B9AC1003C393A /* AlamofireObjectMapper.framework */,
@@ -234,6 +246,8 @@
 				E089A8241EABA8B400C73535 /* PeopleDetailsViewController.swift */,
 				E0C3121B1EAD706F0019450C /* PreloaderViewController.swift */,
 				E02A48CA1F311E8700F16EEB /* SearchViewController.swift */,
+				E014CDDB1F4C1B2500A1C4D5 /* SearchTestController.swift */,
+				E04C36351F4C5D4300C69655 /* TabBarController.swift */,
 			);
 			path = movieapp;
 			sourceTree = "<group>";
@@ -363,13 +377,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-movieapp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DC137588C0074CFCC497FD50 /* [CP] Embed Pods Frameworks */ = {
@@ -378,9 +395,24 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-movieapp/Pods-movieapp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -402,7 +434,9 @@
 				E00A97C81EA7839A00077351 /* MovieListPresenter.swift in Sources */,
 				E03976021E97939E00AA8EC4 /* AppDelegate.swift in Sources */,
 				E00A97CD1EA7D1E600077351 /* GenresService.swift in Sources */,
+				E04C36361F4C5D4300C69655 /* TabBarController.swift in Sources */,
 				E0C021331EABAB2300BD7A0B /* TVDetailsView.swift in Sources */,
+				E014CDDC1F4C1B2500A1C4D5 /* SearchTestController.swift in Sources */,
 				E0B4B36B1EAB85B6004D987C /* TVListViewCell.swift in Sources */,
 				E0B4B3711EAB8BAA004D987C /* PeopleListViewCell.swift in Sources */,
 				E0C0213B1EABC53400BD7A0B /* PeopleDetalsView.swift in Sources */,
@@ -564,6 +598,11 @@
 			baseConfigurationReference = B9A607FA0D1A46A81F01EEE8 /* Pods-movieapp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/RxCocoa",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/RxSwift",
+				);
 				INFOPLIST_FILE = movieapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BSD.movieapp;
@@ -577,6 +616,11 @@
 			baseConfigurationReference = 7ED025EB497381FB8528ACBA /* Pods-movieapp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/RxCocoa",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/RxSwift",
+				);
 				INFOPLIST_FILE = movieapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BSD.movieapp;
