@@ -76,7 +76,7 @@ class TVDetailsView: UIView {
 
                 leadingAnchor.constraint(equalTo: superview.leadingAnchor),
                 trailingAnchor.constraint(equalTo: superview.trailingAnchor),
-                topAnchor.constraint(equalTo: superview.topAnchor),
+                topAnchor.constraint(equalTo: superview.topAnchor, constant: 60),
                 bottomAnchor.constraint(equalTo: superview.bottomAnchor),
 
                 scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),

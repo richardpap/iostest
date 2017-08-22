@@ -85,6 +85,7 @@ class TVListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let VC = TVDetailsViewController()
         VC.TV_ID = tvData[indexPath.row].ID!
+        VC.modalTransitionStyle = .flipHorizontal
         self.present(VC, animated: true, completion: nil)
     }
     

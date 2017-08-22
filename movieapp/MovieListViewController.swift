@@ -90,6 +90,7 @@ class MovieListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let VC = MovieDetailsViewController()
         VC.MOVIE_ID = moviesData[indexPath.row].ID!
+        VC.modalTransitionStyle = .flipHorizontal
         self.present(VC, animated: true, completion: nil)
     }
     
