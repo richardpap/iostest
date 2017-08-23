@@ -27,6 +27,7 @@ class DetailsView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        backgroundColor = .white
         translatesAutoresizingMaskIntoConstraints = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
