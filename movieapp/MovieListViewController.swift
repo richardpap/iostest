@@ -44,7 +44,7 @@ class MovieListViewController: UITableViewController {
     }
     
     func setNavigationBarItems() {
-        
+        self.navigationItem.title = "Movies"
     }
     
     override func didReceiveMemoryWarning() {
