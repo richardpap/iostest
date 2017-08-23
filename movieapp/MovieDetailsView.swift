@@ -117,7 +117,6 @@ class DetailsView: UIView {
         ])
         
         super.updateConstraints()
-        
     }
 
     

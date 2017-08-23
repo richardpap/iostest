@@ -81,8 +81,10 @@ class PeopleListViewController: UITableViewController {
     // called when the cell is selected.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let VC = PeopleDetailsViewController()
-        VC.PEOPLE_ID = peopleData[indexPath.row].ID!
-        self.present(VC, animated: true, completion: nil)
+        if let peopleID = peopleData[indexPath.row].ID {
+            VC.PEOPLE_ID = peopleID
+        }
+        navigationController?.pushViewController(VC, animated: true)
     }
     
     
