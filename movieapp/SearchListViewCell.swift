@@ -115,32 +115,29 @@ class SearchListViewCell: UITableViewCell {
     
     
     func bind(_ list: [SearchListData], _ index: Int) {
-        
-
-            let media = list[index]
+        let media = list[index]
             
-            if let imgPath = media.POSTER_PATH {
-                let imgURL = ImageloaderService.getInstance().IMG_HOST + ImageloaderService.getInstance().IMAGE_SIZE_LIST[0] + imgPath
-                let imgResource = ImageResource(downloadURL: URL(string: imgURL)!, cacheKey: imgURL)
-                dataImage.kf.setImage(with: imgResource)
-                dataImage.contentMode = .scaleAspectFill
-            }
-            
-            if
-                let genreIds = media.GENRE_IDS,
-                let rate = media.VOTE_AVERAGE,
-                let releaseDate = media.RELEASE_DATE,
-                let title = media.ORIGINAL_TITLE,
-                let overview = media.OVERVIEW {
-                dataGenres.text = getGenresText(genreIds)
-                dataRate.text = String(describing: round(10*rate)/10)
-                dataYear.text = checkDate(releaseDate)
-                dataTitle.text = checkData(title)
-                dataDescription.text = checkData(overview)
-            }
-   
-        
-        
+        if let imgPath = media.POSTER_PATH {
+            let imgURL = ImageloaderService.getInstance().IMG_HOST + ImageloaderService.getInstance().IMAGE_SIZE_LIST[0] + imgPath
+            let imgResource = ImageResource(downloadURL: URL(string: imgURL)!, cacheKey: imgURL)
+            dataImage.kf.setImage(with: imgResource)
+            dataImage.contentMode = .scaleAspectFill
+        }
+        if let genreIds = media.GENRE_IDS {
+            dataGenres.text = getGenresText(genreIds)
+        }
+        if let rate = media.VOTE_AVERAGE {
+            dataRate.text = String(describing: round(10*rate)/10)
+        }
+        if let releaseDate = media.RELEASE_DATE {
+            dataYear.text = checkDate(releaseDate)
+        }
+        if let title = media.ORIGINAL_TITLE {
+            dataTitle.text = checkData(title)
+        }
+        if let overview = media.OVERVIEW {
+            dataDescription.text = checkData(overview)
+        }
     }
     
     
