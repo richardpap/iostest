@@ -72,7 +72,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Search data length is \(searchData.count)")
+        print("Search data length is \(searchData.count)  --- \(tableView == self.resultsController.tableView)")
         
         if tableView == self.resultsController.tableView {
             return searchData.count
@@ -84,7 +84,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let index = indexPath.row
-        print("Filling up cell at index \(index)")
+        print("Filling up cell at index \(index)  --- \(tableView == self.resultsController.tableView)")
         
         let cell: SearchListViewCell = self.tableView.dequeueReusableCell(withIdentifier: "SearchCell") as! SearchListViewCell
         cell.bind(searchData, index)
@@ -103,7 +103,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
                 //self.searchController.setActive(false, animated: true)
             }
         }
-        print("Update search results stuff")
+        print("Sending search data  --- \(tableView == self.resultsController.tableView)")
         tableView.reloadData()
     }
 
@@ -111,9 +111,9 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     func setData(_ list: [SearchListData]) {
         searchData = list
-        print("Data recived :: 02")
+        print("Data recived :: 02 --- \(tableView == self.resultsController.tableView)")
         resultsController.tableView.reloadData()
-        print("Reloading tableview :: 03")
+        print("Reloading tableview :: 03 --- \(tableView == self.resultsController.tableView)")
     }
     
     

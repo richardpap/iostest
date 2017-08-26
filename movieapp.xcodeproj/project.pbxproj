@@ -32,6 +32,7 @@
 		E04C36301F4C27F700C69655 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E04C362F1F4C27F700C69655 /* RxCocoa.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		E04C36321F4C27FD00C69655 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E04C36311F4C27FD00C69655 /* RxSwift.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		E04C36361F4C5D4300C69655 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04C36351F4C5D4300C69655 /* TabBarController.swift */; };
+		E0688EBD1F50A5BD00FA0769 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0688EBC1F50A5BD00FA0769 /* SnapKit.framework */; };
 		E089A8231EABA8A000C73535 /* TVDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089A8221EABA8A000C73535 /* TVDetailsViewController.swift */; };
 		E089A8251EABA8B400C73535 /* PeopleDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089A8241EABA8B400C73535 /* PeopleDetailsViewController.swift */; };
 		E089A8271EABA9A600C73535 /* TVDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089A8261EABA9A600C73535 /* TVDetailsPresenter.swift */; };
@@ -97,6 +98,7 @@
 		E04C362F1F4C27F700C69655 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "Pods/../build/Debug-iphoneos/RxCocoa/RxCocoa.framework"; sourceTree = "<group>"; };
 		E04C36311F4C27FD00C69655 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Pods/../build/Debug-iphoneos/RxSwift/RxSwift.framework"; sourceTree = "<group>"; };
 		E04C36351F4C5D4300C69655 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		E0688EBC1F50A5BD00FA0769 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = "../../Library/Developer/Xcode/DerivedData/movieapp-gktzlophwovzbwfzmjkystwgimax/Build/Products/Debug-iphonesimulator/SnapKit/SnapKit.framework"; sourceTree = "<group>"; };
 		E089A8221EABA8A000C73535 /* TVDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVDetailsViewController.swift; sourceTree = "<group>"; };
 		E089A8241EABA8B400C73535 /* PeopleDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleDetailsViewController.swift; sourceTree = "<group>"; };
 		E089A8261EABA9A600C73535 /* TVDetailsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVDetailsPresenter.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0688EBD1F50A5BD00FA0769 /* SnapKit.framework in Frameworks */,
 				E04C36321F4C27FD00C69655 /* RxSwift.framework in Frameworks */,
 				E04C36301F4C27F700C69655 /* RxCocoa.framework in Frameworks */,
 				E0332FCE1EA906300027245D /* PureLayout.framework in Frameworks */,
@@ -164,6 +167,7 @@
 		53702A7903AC2D1B7939085E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E0688EBC1F50A5BD00FA0769 /* SnapKit.framework */,
 				E04C36311F4C27FD00C69655 /* RxSwift.framework */,
 				E04C362F1F4C27F700C69655 /* RxCocoa.framework */,
 				E0332FCD1EA906300027245D /* PureLayout.framework */,
@@ -403,6 +407,7 @@
 				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -413,6 +418,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

@@ -10,6 +10,7 @@
 import UIKit
 import Alamofire
 import Kingfisher
+import SnapKit
 
 class SearchListViewCell: UITableViewCell {
     
@@ -28,21 +29,6 @@ class SearchListViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        starView.image = starImage
-        starView.contentMode = .scaleAspectFill
-        
-        calendarView.image = calendarImage
-        calendarView.contentMode = .scaleAspectFill
-        
-        dataImage.translatesAutoresizingMaskIntoConstraints = false
-        dataTitle.translatesAutoresizingMaskIntoConstraints = false
-        dataDescription.translatesAutoresizingMaskIntoConstraints = false
-        dataRate.translatesAutoresizingMaskIntoConstraints = false
-        dataGenres.translatesAutoresizingMaskIntoConstraints = false
-        starView.translatesAutoresizingMaskIntoConstraints = false
-        calendarView.translatesAutoresizingMaskIntoConstraints = false
-        dataYear.translatesAutoresizingMaskIntoConstraints = false
-        
         contentView.addSubview(dataImage)
         contentView.addSubview(dataTitle)
         contentView.addSubview(dataRate)
@@ -52,67 +38,80 @@ class SearchListViewCell: UITableViewCell {
         contentView.addSubview(dataGenres)
         contentView.addSubview(dataDescription)
         
+        dataImage.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(contentView.snp.top).offset(10)
+            make.left.equalTo(contentView.snp.left).offset(10)
+            make.height.equalTo(160)
+            make.width.equalTo(100)
+        }
+        
         dataTitle.font = dataTitle.font.withSize(18)
+        dataTitle.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(contentView.snp.top).offset(15)
+            make.left.equalTo(dataImage.snp.right).offset(10)
+            make.right.equalTo(contentView.snp.right).offset(-80)
+            make.height.equalTo(24)
+        }
+        
+        starView.image = starImage
+        starView.contentMode = .scaleAspectFill
+        starView.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(contentView.snp.top).offset(15)
+            make.right.equalTo(contentView.snp.right).offset(-10)
+            make.height.equalTo(24)
+            make.width.equalTo(24)
+        }
+        
         dataRate.font = dataTitle.font.withSize(18)
         dataRate.textAlignment = .right
+        dataRate.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(contentView.snp.top).offset(15)
+            make.right.equalTo(starView.snp.left).offset(-6)
+            make.width.equalTo(36)
+        }
+        
         dataGenres.font = dataGenres.font.withSize(14)
+        dataGenres.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(contentView.snp.top).offset(40)
+            make.left.equalTo(dataImage.snp.right).offset(10)
+            make.right.equalTo(contentView.snp.right).offset(-100)
+            make.height.equalTo(24)
+        }
+        
+        calendarView.image = calendarImage
+        calendarView.contentMode = .scaleAspectFill
+        calendarView.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(contentView.snp.top).offset(42)
+            make.right.equalTo(contentView.snp.right).offset(-10)
+            make.height.equalTo(20)
+            make.width.equalTo(24)
+        }
+        
         dataYear.font = dataGenres.font.withSize(14)
         dataYear.textAlignment = .right
+        dataYear.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(contentView.snp.top).offset(40)
+            make.right.equalTo(calendarView.snp.left).offset(-6)
+            make.height.equalTo(24)
+            make.width.equalTo(50)
+        }
+        
         dataDescription.font = dataGenres.font.withSize(14)
         dataDescription.numberOfLines = 0
+        dataDescription.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(contentView.snp.top).offset(80)
+            make.left.equalTo(dataImage.snp.right).offset(10)
+            make.right.equalTo(contentView.snp.right).offset(-10)
+            make.height.equalTo(80)
+        }
         
-        
-        NSLayoutConstraint.activate([
-            
-            dataImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            dataImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            dataImage.heightAnchor.constraint(equalToConstant: 160),
-            dataImage.widthAnchor.constraint(equalToConstant: 100),
-            
-            dataTitle.leadingAnchor.constraint(equalTo: dataImage.trailingAnchor, constant: 10),
-            dataTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -80),
-            dataTitle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
-            dataTitle.heightAnchor.constraint(equalToConstant: 24),
-            
-            starView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            starView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
-            starView.widthAnchor.constraint(equalToConstant: 24),
-            starView.heightAnchor.constraint(equalToConstant: 24),
-            
-            dataRate.trailingAnchor.constraint(equalTo: starView.leadingAnchor, constant: -6),
-            dataRate.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
-            dataRate.widthAnchor.constraint(equalToConstant: 35),
-            
-            dataGenres.leadingAnchor.constraint(equalTo: dataImage.trailingAnchor, constant: 10),
-            dataGenres.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -100),
-            dataGenres.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
-            dataGenres.heightAnchor.constraint(equalToConstant: 24),
-            
-            calendarView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            calendarView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 42),
-            calendarView.widthAnchor.constraint(equalToConstant: 24),
-            calendarView.heightAnchor.constraint(equalToConstant: 20),
-            
-            dataYear.trailingAnchor.constraint(equalTo: calendarView.leadingAnchor, constant: -6),
-            dataYear.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
-            dataYear.widthAnchor.constraint(equalToConstant: 50),
-            dataYear.heightAnchor.constraint(equalToConstant: 24),
-            
-            dataDescription.leadingAnchor.constraint(equalTo: dataImage.trailingAnchor, constant: 10),
-            dataDescription.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            dataDescription.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 80),
-            dataDescription.heightAnchor.constraint(lessThanOrEqualToConstant: 80)
-            ])
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func prepareForReuse() {
-
-    }
-    
+    //override func prepareForReuse() { }
     
     func bind(_ list: [SearchListData], _ index: Int) {
         let media = list[index]

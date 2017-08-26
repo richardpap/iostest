@@ -13,4 +13,5 @@ target 'movieapp' do
     pod 'PureLayout'
     pod 'RxSwift'
     pod 'RxCocoa'
+    pod 'SnapKit'
 end
