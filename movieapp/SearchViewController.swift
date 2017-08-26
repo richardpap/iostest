@@ -87,7 +87,9 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
         print("Filling up cell at index \(index)  --- \(tableView == self.resultsController.tableView)")
         
         let cell: SearchListViewCell = self.tableView.dequeueReusableCell(withIdentifier: "SearchCell") as! SearchListViewCell
-        cell.bind(searchData, index)
+        if searchData.count > 0 {
+            cell.bind(searchData[index])
+        }
         return cell
     }
     
