@@ -19,21 +19,26 @@ class TabBarController: UITabBarController {
         let moviesTabController = UINavigationController(rootViewController: moviesListController)
         moviesTabController.tabBarItem.title = "Movies"
         moviesTabController.tabBarItem.image = UIImage(named: "movie")
+        moviesTabController.tabBarItem.selectedImage = UIImage(named: "movie")
+        //moviesTabController.tabBarItem.accessibilityFrame.height. = 30
         
         let tvListController = TVListViewController()
         let tvTabController = UINavigationController(rootViewController: tvListController)
         tvTabController.tabBarItem.title = "TV Shows"
         tvTabController.tabBarItem.image = UIImage(named: "tv")
+        tvTabController.tabBarItem.selectedImage = UIImage(named: "tv")
         
         let peopleListController = PeopleListViewController()
         let peopleTabController = UINavigationController(rootViewController: peopleListController)
         peopleTabController.tabBarItem.title = "People"
         peopleTabController.tabBarItem.image = UIImage(named: "people")
+        peopleTabController.tabBarItem.selectedImage = UIImage(named: "people")
         
         let searchListController = SearchViewController()
         let searchTabController = UINavigationController(rootViewController: searchListController)
         searchTabController.tabBarItem.title = "Search"
         searchTabController.tabBarItem.image = UIImage(named: "search")
+        searchTabController.tabBarItem.selectedImage = UIImage(named: "search")
         
         viewControllers = [moviesTabController, tvTabController, peopleTabController, searchTabController]
         

@@ -10,11 +10,11 @@ import UIKit
 
 class SearchViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
-    
+    private var cellId = "SearchCell"
     private var IS_DATA_LOADED = false
     private let searchPresenter = SearchPresenter(service: SearchService.getInstance())
-    private var searchController = UISearchController()
-    private var resultsController = UITableViewController()
+    private var searchController = UISearchController(searchResultsController: nil)
+    //private var resultsController = UITableViewController()
     private var searchData = [SearchListData]() {
         didSet {
             print("The value of searchData changed from \(oldValue) to \(searchData)")
@@ -27,12 +27,13 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
         setNavigationBarItems()
         setSearchController()
         //resultsController.tableView.register(SearchListViewCell.self, forCellReuseIdentifier: "SearchResultsCell")
-        resultsController.tableView.rowHeight = 180
-        tableView.register(SearchListViewCell.self, forCellReuseIdentifier: "SearchCell")
+        tableView.register(SearchListViewCell.self, forCellReuseIdentifier: cellId)
         tableView.rowHeight = 180
-        //tableView.isHidden = true
+        //resultsController.tableView.rowHeight = 180
         
-        searchController.searchBar.delegate = self
+        //tableView.backgroundColor = .red
+        //resultsController.tableView.backgroundColor = .blue
+        //tableView.isHidden = true
         setPresenter()
     }
     
@@ -43,10 +44,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     
     func setSearchController() {
-        resultsController.tableView.dataSource = self
-        resultsController.tableView.delegate = self
-        
-        searchController = UISearchController(searchResultsController: resultsController)
+        //searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         tableView.tableHeaderView = searchController.searchBar
@@ -72,9 +70,9 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Search data length is \(searchData.count)  --- \(tableView == self.resultsController.tableView)")
+        print("Search data length is \(searchData.count)")
         
-        if tableView == self.resultsController.tableView {
+        if searchController.isActive {
             return searchData.count
         }
         
@@ -84,13 +82,26 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let index = indexPath.row
-        print("Filling up cell at index \(index)  --- \(tableView == self.resultsController.tableView)")
+        print("Filling up cell at index \(index)")
         
         let cell: SearchListViewCell = self.tableView.dequeueReusableCell(withIdentifier: "SearchCell") as! SearchListViewCell
         if searchData.count > 0 {
             cell.bind(searchData[index])
         }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            searchData.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
     }
     
     
@@ -105,7 +116,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
                 //self.searchController.setActive(false, animated: true)
             }
         }
-        print("Sending search data  --- \(tableView == self.resultsController.tableView)")
+        print("Sending search data")
         tableView.reloadData()
     }
 
@@ -113,9 +124,9 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     func setData(_ list: [SearchListData]) {
         searchData = list
-        print("Data recived :: 02 --- \(tableView == self.resultsController.tableView)")
-        resultsController.tableView.reloadData()
-        print("Reloading tableview :: 03 --- \(tableView == self.resultsController.tableView)")
+        print("Data recived :: 02")
+        tableView.reloadData()
+        print("Reloading tableview :: 03")
     }
     
     
@@ -132,13 +143,13 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         print("Focuuus")
-        resultsController.tableView.reloadData()
+        tableView.reloadData()
     }
     
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         print("Game Over")
-        tableView.dataSource = resultsController.tableView.dataSource
+        //tableView.dataSource = resultsController.tableView.dataSource
         tableView.reloadData()
     }
 
