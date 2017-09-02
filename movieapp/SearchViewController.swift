@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Alamofire
 
 class SearchViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
     private var cellId = "SearchCell"
     private var IS_DATA_LOADED = false
+    //binding the presenter
     private let searchPresenter = SearchPresenter(service: SearchService.getInstance())
+    //pass nil if you wish to display search results in the same view that you are searching.
     private var searchController = UISearchController(searchResultsController: nil)
     //private var resultsController = UITableViewController()
     private var searchData = [SearchListData]() {
@@ -26,15 +29,11 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
         super.viewDidLoad()
         setNavigationBarItems()
         setSearchController()
-        //resultsController.tableView.register(SearchListViewCell.self, forCellReuseIdentifier: "SearchResultsCell")
+        setPresenter()
+
         tableView.register(SearchListViewCell.self, forCellReuseIdentifier: cellId)
         tableView.rowHeight = 180
-        //resultsController.tableView.rowHeight = 180
-        
-        //tableView.backgroundColor = .red
-        //resultsController.tableView.backgroundColor = .blue
-        //tableView.isHidden = true
-        setPresenter()
+        tableView.backgroundColor = .white
     }
     
     
@@ -106,26 +105,35 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     
     func updateSearchResults(for searchController: UISearchController) {
-        //update results tableview here
+        // Called when the search bar's text or scope has changed or when the search bar becomes first responder.
+        let params = Parameters.getInstance()
         let keywords = self.searchController.searchBar.text
         
         if let keywords = keywords {
             if keywords.characters.count > 0 {
+                self.searchData = []
+                self.tableView.reloadData()
                 print("Requesting response from DB :: 01")
-                searchPresenter.getDatalist(keywords)
-                //self.searchController.setActive(false, animated: true)
+                
+                let SEARCH_URL = params.HOST + "search/multi?api_key=" + params.API_KEY + "&language=" +  params.LANG + "&query=" + keywords + "&page=1&include_adult=false"
+                let request = Alamofire.request(SEARCH_URL)
+                
+                request.responseArray(keyPath: "results") {(response: DataResponse<[SearchListData]>) in
+                    if let responseData = response.result.value {
+                        self.searchData = responseData
+                        self.tableView.reloadData()
+                    }
+                }
             }
         }
-        print("Sending search data")
-        tableView.reloadData()
     }
 
     
     
     func setData(_ list: [SearchListData]) {
-        searchData = list
+        //searchData = list
         print("Data recived :: 02")
-        tableView.reloadData()
+        //tableView.reloadData()
         print("Reloading tableview :: 03")
     }
     
@@ -136,21 +144,17 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("Search clicked")
-        //searchData.removeAll()
         dismiss(animated: true, completion: nil)
     }
     
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         print("Focuuus")
-        tableView.reloadData()
     }
     
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         print("Game Over")
-        //tableView.dataSource = resultsController.tableView.dataSource
-        tableView.reloadData()
     }
 
 }

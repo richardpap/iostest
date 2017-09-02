@@ -113,37 +113,38 @@ class SearchListViewCell: UITableViewCell {
     
     //override func prepareForReuse() { }
     
-    func bind(_ listItem: SearchListData) {
+    func bind(_ item: SearchListData) {
 
-        if let imgPath = listItem.POSTER_PATH {
+        if let imgPath = item.POSTER_PATH {
             let imgURL = ImageloaderService.getInstance().IMG_HOST + ImageloaderService.getInstance().IMAGE_SIZE_LIST[0] + imgPath
             let imgResource = ImageResource(downloadURL: URL(string: imgURL)!, cacheKey: imgURL)
             dataImage.kf.setImage(with: imgResource)
             dataImage.contentMode = .scaleAspectFill
         }
-        if let genreIds = listItem.GENRE_IDS {
+        if let genreIds = item.GENRE_IDS {
             dataGenres.text = getGenresText(genreIds)
-        }
-        if let rate = listItem.VOTE_AVERAGE {
-            dataRate.text = String(describing: round(10*rate)/10)
-        }
-        if let releaseDate = listItem.RELEASE_DATE {
-            dataYear.text = checkDate(releaseDate)
-        }
-        if let title = listItem.ORIGINAL_TITLE {
-            dataTitle.text = checkData(title)
-        }
-        if let overview = listItem.OVERVIEW {
-            dataDescription.text = checkData(overview)
-        }
-    }
-    
-    
-    func checkData(_ data: String) -> String {
-        if data.characters.count > 0 {
-            return data
         } else {
-            return "No Data"
+            dataGenres.text = "No data"
+        }
+        if let rate = item.VOTE_AVERAGE {
+            dataRate.text = String(describing: round(10*rate)/10)
+        } else {
+            dataRate.text = "????"
+        }
+        if let releaseDate = item.RELEASE_DATE {
+            dataYear.text = checkDate(releaseDate)
+        } else {
+            dataYear.text = "0000"
+        }
+        if let title = item.ORIGINAL_TITLE {
+            dataTitle.text = title
+        } else {
+            dataTitle.text = "No data"
+        }
+        if let overview = item.OVERVIEW {
+            dataDescription.text = overview
+        } else {
+            dataDescription.text = "No data"
         }
     }
     
