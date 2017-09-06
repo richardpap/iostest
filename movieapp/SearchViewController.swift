@@ -111,19 +111,33 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
         
         if let keywords = keywords {
             if keywords.characters.count > 0 {
-                self.searchData = []
-                self.tableView.reloadData()
-                print("Requesting response from DB :: 01")
+                //searchPresenter.getDatalist(keywords)
                 
-                let SEARCH_URL = params.HOST + "search/multi?api_key=" + params.API_KEY + "&language=" +  params.LANG + "&query=" + keywords + "&page=1&include_adult=false"
-                let request = Alamofire.request(SEARCH_URL)
-                
-                request.responseArray(keyPath: "results") {(response: DataResponse<[SearchListData]>) in
-                    if let responseData = response.result.value {
-                        self.searchData = responseData
-                        self.tableView.reloadData()
+           
+                    //saome call code
+                    self.IS_DATA_LOADED = false
+                    self.showLoading()
+                    self.searchData = []
+                    self.tableView.reloadData()
+                    print("Requesting response from DB :: 01, keyword: \(keywords)")
+                    
+                    let SEARCH_URL = params.HOST + "search/movie?api_key=" + params.API_KEY + "&language=" +  params.LANG + "&query=" + keywords + "&page=1&include_adult=false"
+                    let request = Alamofire.request(SEARCH_URL)
+                    
+                    request.responseArray(keyPath: "results") {(response: DataResponse<[SearchListData]>) in
+                        if let responseData = response.result.value {
+                            self.searchData = responseData
+                            self.IS_DATA_LOADED = true
+                            print("Data recived :: 02")
+                            
+                            
+                            DispatchQueue.main.async(execute: {
+                                print("Reloading tableview :: 03")
+                                self.tableView.reloadData()
+                                self.hideLoading()
+                            })
+                        }
                     }
-                }
             }
         }
     }
@@ -132,9 +146,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     func setData(_ list: [SearchListData]) {
         //searchData = list
-        print("Data recived :: 02")
         //tableView.reloadData()
-        print("Reloading tableview :: 03")
     }
     
     
