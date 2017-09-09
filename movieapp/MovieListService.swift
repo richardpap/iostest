@@ -1,10 +1,3 @@
-//
-//  MovieListService.swift
-//  movieapp
-//
-//  Created by Richard Pap on 2017. 04. 19..
-//  Copyright © 2017. Richard Pap. All rights reserved.
-//
 
 import UIKit
 import Alamofire

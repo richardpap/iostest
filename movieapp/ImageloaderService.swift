@@ -1,10 +1,3 @@
-//
-//  ImagesService.swift
-//  movieapp
-//
-//  Created by Richard Pap on 2017. 04. 19..
-//  Copyright © 2017. Richard Pap. All rights reserved.
-//
 
 import UIKit
 import Alamofire
@@ -14,7 +7,7 @@ class ImageloaderService {
     static let instance = ImageloaderService()
     var IMG_HOST = ""
     var IMAGE_SIZE_LIST = [String]()
-    var params = Parameters()
+    var params = Parameters.getInstance()
     
     static func getInstance() -> ImageloaderService {
         return instance
