@@ -36,14 +36,14 @@ class ImageloaderService {
         return Disposables.create()
     }
     
-    func setData(_ list: MovieImages) {
-        if let host = list.SECURE_BASE_URL {
+    func setData(_ data: MovieImages) {
+        if let host = data.SECURE_BASE_URL {
             self.IMG_HOST = host
         } else {
             self.IMG_HOST = "https://image.tmdb.org/t/p/"
         }
         
-        if let imgSizeList = list.BACKDROP_SIZES {
+        if let imgSizeList = data.BACKDROP_SIZES {
             self.IMAGE_SIZE_LIST = imgSizeList
         } else {
             self.IMAGE_SIZE_LIST = ["w300", "w780", "w1280", "original"]
