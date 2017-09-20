@@ -33,8 +33,6 @@ class MovieListViewController: UITableViewController {
         moviesListPresenter.attachView(view: self)
         moviesListPresenter.getDatalist()
 
-        GenresService.getInstance().loadData()
-
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

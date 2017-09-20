@@ -28,8 +28,6 @@ class TVListViewController: UITableViewController {
         
         tvListPresenter.attachView(view: self)
         tvListPresenter.getDatalist()
-        
-        GenresService.getInstance().loadData()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
