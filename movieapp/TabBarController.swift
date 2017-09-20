@@ -28,11 +28,6 @@ class TabBarController: UITabBarController {
         tvTabController.tabBarItem.image = UIImage(named: "tv")
         tvTabController.tabBarItem.selectedImage = UIImage(named: "tv")
         
-        let peopleListController = PeopleListViewController()
-        let peopleTabController = UINavigationController(rootViewController: peopleListController)
-        peopleTabController.tabBarItem.title = "People"
-        peopleTabController.tabBarItem.image = UIImage(named: "people")
-        peopleTabController.tabBarItem.selectedImage = UIImage(named: "people")
         
         let searchListController = SearchViewController()
         let searchTabController = UINavigationController(rootViewController: searchListController)
@@ -40,7 +35,14 @@ class TabBarController: UITabBarController {
         searchTabController.tabBarItem.image = UIImage(named: "search")
         searchTabController.tabBarItem.selectedImage = UIImage(named: "search")
         
-        viewControllers = [moviesTabController, tvTabController, peopleTabController, searchTabController]
+        
+        let favouritesListController = SearchViewController()
+        let favouritesTabController = UINavigationController(rootViewController: favouritesListController)
+        favouritesTabController.tabBarItem.title = "Favourites"
+        favouritesTabController.tabBarItem.image = UIImage(named: "search")
+        favouritesTabController.tabBarItem.selectedImage = UIImage(named: "search")
+        
+        viewControllers = [moviesTabController, tvTabController, searchTabController, favouritesTabController]
         
     }
 

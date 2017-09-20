@@ -34,9 +34,10 @@ class SearchPresenter {
     }
     
     func getTopList() {
+        /*
         service.getTopListData(){ [weak self] data in
             self?.listView?.setTopList(data)
-        }
+        }*/
     }
 }
 

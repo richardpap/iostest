@@ -1,6 +1,8 @@
 
 import UIKit
 import Alamofire
+import RxCocoa
+import RxSwift
 
 class ImageloaderService {
     
@@ -11,6 +13,37 @@ class ImageloaderService {
     
     static func getInstance() -> ImageloaderService {
         return instance
+    }
+    
+    let loadImageData = Observable<MovieImages>.create {(observer) -> Disposable in
+        
+        DispatchQueue.global(qos: .default).async {
+            
+            let params = Parameters.getInstance()
+            let URL =  params.HOST  + "configuration?api_key=" + params.API_KEY
+            let request = Alamofire.request(URL)
+            
+            request.responseObject(keyPath: "images") {(response: DataResponse<MovieImages>) in
+                if let responseData = response.result.value {
+                    observer.onNext(responseData)
+                } else {
+                    observer.onError("Error" as! Error)
+                }
+                observer.onCompleted()
+            }
+        }
+        
+        return Disposables.create()
+    }
+    
+    func setData(_ list: MovieImages) {
+        if
+            let host = list.SECURE_BASE_URL,
+            let imgSizeList = list.BACKDROP_SIZES {
+                self.IMAGE_SIZE_LIST = imgSizeList
+                self.IMG_HOST = host
+  
+        }
     }
     
     func loadData(callBack:@escaping() -> Void) {

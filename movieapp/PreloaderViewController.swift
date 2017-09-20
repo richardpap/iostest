@@ -7,17 +7,30 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class PreloaderViewController: UIViewController {
+    
+    private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoading()
         
-        ImageloaderService.getInstance().loadData(){[weak self] data in
-            guard let strongSelf = self else { return }
-            strongSelf.loadApp()
-        }
+        let genresData = GenresService.getInstance().loadGenresData
+        let imgData = ImageloaderService.getInstance().loadImageData
+        
+        let oHandler = Observable.zip(genresData, imgData, resultSelector: { (GenresList, MovieImages) in
+            return (GenresList, MovieImages)
+        })
+        
+        oHandler.subscribe(onNext:{ (GenresList, MovieImages) in
+            print("Preloader ftw")
+            GenresService.getInstance().setData(GenresList)
+            ImageloaderService.getInstance().setData(MovieImages)
+            self.loadApp()
+        }).addDisposableTo(disposeBag)
 
         // Do any additional setup after loading the view.
     }

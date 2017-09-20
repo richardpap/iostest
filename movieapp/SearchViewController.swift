@@ -8,13 +8,15 @@
 
 import UIKit
 import Alamofire
+import RxCocoa
+import RxSwift
 
 class SearchViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
     private var cellId = "SearchCell"
     private var IS_DATA_LOADED = false
     //binding the presenter
-    private let searchPresenter = SearchPresenter(service: SearchService.getInstance())
+    let searchPresenter = SearchPresenter(service: SearchService.getInstance())
     //pass nil if you wish to display search results in the same view that you are searching.
     private var searchController = UISearchController(searchResultsController: nil)
     //private var resultsController = UITableViewController()
@@ -23,6 +25,9 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
             print("The value of searchData changed from \(oldValue) to \(searchData)")
         }
     }
+    
+    private let disposeBag = DisposeBag()
+    
     
     
     override func viewDidLoad() {
@@ -65,7 +70,21 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     func setPresenter() {
         searchPresenter.attachView(view: self)
-        searchPresenter.getTopList()
+        //searchPresenter.getTopList()
+        SearchService.getInstance().getTopListData.subscribe(onNext:{ (responseData) in
+            self.searchData = responseData
+            print("RXLife::::::::::::::::::::::")
+            self.IS_DATA_LOADED = true
+            
+            DispatchQueue.main.async(execute: {
+                self.tableView.reloadData()
+                self.hideLoading()
+            })
+        }).addDisposableTo(disposeBag)
+        
+        
+        //let getToplListEl = SearchService.getInstance().getTopListData;
+        //Observable.just(1).subscribe(getToplListEl)
     }
     
     
@@ -79,8 +98,6 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     /* ===================================================
      // @ TableView
      =================================================== */
-    
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -115,12 +132,38 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     }
     
     
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let favRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "      ", handler:{action, indexpath in
+            print("MORE•ACTION");
+            self.addToFavourites(indexPath.row);
+        });
+        
+        favRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
+        favRowAction.backgroundColor = UIColor(patternImage: UIImage(named: "Star")!)
+        
+        let delRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Delete", handler:{action, indexpath in
+            self.searchData.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        });
+        
+        return [delRowAction, favRowAction];
+    }
+    
+
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             searchData.remove(at: indexPath.row)
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.endUpdates()
+        }
+        
+        if editingStyle == .insert {
+            print("add")
         }
     }
     
@@ -136,12 +179,15 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     
     
+    func addToFavourites(_ indexPath: Int) {
+        
+    }
+    
+    
 
     /* ===================================================
     // @ Search and data
     =================================================== */
-    
-    
     func updateSearchResults(for searchController: UISearchController) {
         let keywords = self.searchController.searchBar.text
         
@@ -191,7 +237,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.characters.count == 0 {
             print("Wipe")
-            searchPresenter.getTopList()
+            //searchPresenter.getTopList()
         }
     }
     
@@ -202,7 +248,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         print("Game Over")
-        searchPresenter.getTopList()
+        //searchPresenter.getTopList()
     }
 
 }

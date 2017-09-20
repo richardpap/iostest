@@ -1,6 +1,8 @@
 
 import UIKit
 import Alamofire
+import RxCocoa
+import RxSwift
 
 class SearchService {
     
@@ -27,6 +29,25 @@ class SearchService {
         }
     }
     
+    let getTopListData = Observable<[SearchListData]>.create { (observer) -> Disposable in
+        let keywords = "aliens"
+        let params = Parameters.getInstance()
+        
+        DispatchQueue.global(qos: .default).async {
+            let TOPLIST_URL = params.HOST + "movie/popular?api_key=" + params.API_KEY + "&language=" +  params.LANG
+            let request = Alamofire.request(TOPLIST_URL)
+            
+            request.responseArray(keyPath: "results") {(response: DataResponse<[SearchListData]>) in
+                if let responseData = response.result.value {
+                    observer.onNext(responseData)
+                    observer.onCompleted()
+                }
+            }
+        }
+        
+        return Disposables.create()
+    }
+    /*
     func getTopListData(callBack:@escaping([SearchListData]) -> Void) {
         let TOPLIST_URL = params.HOST + "movie/popular?api_key=" + params.API_KEY + "&language=" +  params.LANG
         let request = Alamofire.request(TOPLIST_URL)
@@ -36,5 +57,5 @@ class SearchService {
                 callBack(responseData);
             }
         }
-    }
+    }*/
 }
