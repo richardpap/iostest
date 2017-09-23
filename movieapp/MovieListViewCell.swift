@@ -1,10 +1,3 @@
-//
-//  DetailsView.swift
-//  movieapp
-//
-//  Created by Richard Pap on 2017. 04. 21..
-//  Copyright © 2017. Richard Pap. All rights reserved.
-//
 
 import UIKit
 import Alamofire
@@ -27,21 +20,6 @@ class MovieListViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        starView.image = starImage
-        starView.contentMode = .scaleAspectFill
-        
-        calendarView.image = calendarImage
-        calendarView.contentMode = .scaleAspectFill
-        
-        dataImage.translatesAutoresizingMaskIntoConstraints = false
-        dataTitle.translatesAutoresizingMaskIntoConstraints = false
-        dataDescription.translatesAutoresizingMaskIntoConstraints = false
-        dataRate.translatesAutoresizingMaskIntoConstraints = false
-        dataGenres.translatesAutoresizingMaskIntoConstraints = false
-        starView.translatesAutoresizingMaskIntoConstraints = false
-        calendarView.translatesAutoresizingMaskIntoConstraints = false
-        dataYear.translatesAutoresizingMaskIntoConstraints = false
-        
         contentView.addSubview(dataImage)
         contentView.addSubview(dataTitle)
         contentView.addSubview(dataRate)
@@ -50,58 +28,74 @@ class MovieListViewCell: UITableViewCell {
         contentView.addSubview(dataYear)
         contentView.addSubview(dataGenres)
         contentView.addSubview(dataDescription)
-
+        
+        dataImage.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(contentView.snp.top).offset(10)
+            make.left.equalTo(contentView.snp.left).offset(10)
+            make.height.equalTo(160)
+            make.width.equalTo(100)
+        }
+        
         dataTitle.font = dataTitle.font.withSize(18)
+        dataTitle.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(contentView.snp.top).offset(15)
+            make.left.equalTo(dataImage.snp.right).offset(10)
+            make.right.equalTo(contentView.snp.right).offset(-80)
+            make.height.equalTo(24)
+        }
+        
+        starView.image = starImage
+        starView.contentMode = .scaleAspectFill
+        starView.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(contentView.snp.top).offset(15)
+            make.right.equalTo(contentView.snp.right).offset(-10)
+            make.height.equalTo(24)
+            make.width.equalTo(24)
+        }
+        
         dataRate.font = dataTitle.font.withSize(18)
         dataRate.textAlignment = .right
+        dataRate.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(contentView.snp.top).offset(15)
+            make.right.equalTo(starView.snp.left).offset(-6)
+            make.width.equalTo(36)
+        }
+        
         dataGenres.font = dataGenres.font.withSize(14)
+        dataGenres.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(contentView.snp.top).offset(40)
+            make.left.equalTo(dataImage.snp.right).offset(10)
+            make.right.equalTo(contentView.snp.right).offset(-100)
+            make.height.equalTo(24)
+        }
+        
+        calendarView.image = calendarImage
+        calendarView.contentMode = .scaleAspectFill
+        calendarView.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(contentView.snp.top).offset(42)
+            make.right.equalTo(contentView.snp.right).offset(-10)
+            make.height.equalTo(20)
+            make.width.equalTo(24)
+        }
+        
         dataYear.font = dataGenres.font.withSize(14)
         dataYear.textAlignment = .right
+        dataYear.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(contentView.snp.top).offset(40)
+            make.right.equalTo(calendarView.snp.left).offset(-6)
+            make.height.equalTo(24)
+            make.width.equalTo(50)
+        }
+        
         dataDescription.font = dataGenres.font.withSize(14)
         dataDescription.numberOfLines = 0
+        dataDescription.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(contentView.snp.top).offset(80)
+            make.left.equalTo(dataImage.snp.right).offset(10)
+            make.right.equalTo(contentView.snp.right).offset(-10)
+            make.height.equalTo(80)
+        }
         
-        
-        NSLayoutConstraint.activate([
-
-                dataImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-                dataImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-                dataImage.heightAnchor.constraint(equalToConstant: 160),
-                dataImage.widthAnchor.constraint(equalToConstant: 100),
-
-                dataTitle.leadingAnchor.constraint(equalTo: dataImage.trailingAnchor, constant: 10),
-                dataTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -80),
-                dataTitle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
-                dataTitle.heightAnchor.constraint(equalToConstant: 24),
-
-                starView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-                starView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
-                starView.widthAnchor.constraint(equalToConstant: 24),
-                starView.heightAnchor.constraint(equalToConstant: 24),
-
-                dataRate.trailingAnchor.constraint(equalTo: starView.leadingAnchor, constant: -6),
-                dataRate.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
-                dataRate.widthAnchor.constraint(equalToConstant: 35),
-
-                dataGenres.leadingAnchor.constraint(equalTo: dataImage.trailingAnchor, constant: 10),
-                dataGenres.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -100),
-                dataGenres.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
-                dataGenres.heightAnchor.constraint(equalToConstant: 24),
-
-                calendarView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-                calendarView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 42),
-                calendarView.widthAnchor.constraint(equalToConstant: 24),
-                calendarView.heightAnchor.constraint(equalToConstant: 20),
-
-                dataYear.trailingAnchor.constraint(equalTo: calendarView.leadingAnchor, constant: -6),
-                dataYear.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
-                dataYear.widthAnchor.constraint(equalToConstant: 50),
-                dataYear.heightAnchor.constraint(equalToConstant: 24),
-
-                dataDescription.leadingAnchor.constraint(equalTo: dataImage.trailingAnchor, constant: 10),
-                dataDescription.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-                dataDescription.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 80),
-                dataDescription.heightAnchor.constraint(lessThanOrEqualToConstant: 80)
-        ])
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -109,29 +103,48 @@ class MovieListViewCell: UITableViewCell {
     }
     
     
-    func bind(_ list: [MovieList], _ index: Int) {
-        let media = list[index]
-        
-        if let imgPath = media.POSTER_PATH {
+    func bind(_ item: MovieList) {
+        if let imgPath = item.POSTER_PATH {
             let imgURL = ImageloaderService.getInstance().IMG_HOST + ImageloaderService.getInstance().IMAGE_SIZE_LIST[0] + imgPath
             let imgResource = ImageResource(downloadURL: URL(string: imgURL)!, cacheKey: imgURL)
             dataImage.kf.setImage(with: imgResource)
             dataImage.contentMode = .scaleAspectFill
         }
-        
-        if
-            let genreIds = media.GENRE_IDS,
-            let rate = media.VOTE_AVERAGE,
-            let releaseDate = media.RELEASE_DATE,
-            let title = media.ORIGINAL_TITLE,
-            let overview = media.OVERVIEW {
+        if let genreIds = item.GENRE_IDS {
             dataGenres.text = getGenresText(genreIds)
-                dataRate.text = String(describing: round(10*rate)/10)
-                dataYear.text = releaseDate.substring(to: (releaseDate.index(releaseDate.startIndex, offsetBy: 4)))
-                dataTitle.text = title
-                dataDescription.text = overview
+        } else {
+            dataGenres.text = "No data"
+        }
+        if let rate = item.VOTE_AVERAGE {
+            dataRate.text = String(describing: round(10*rate)/10)
+        } else {
+            dataRate.text = "????"
+        }
+        if let releaseDate = item.RELEASE_DATE {
+            dataYear.text = checkDate(releaseDate)
+        } else {
+            dataYear.text = "0000"
+        }
+        if let title = item.ORIGINAL_TITLE {
+            dataTitle.text = title
+        } else {
+            dataTitle.text = "No data"
+        }
+        if let overview = item.OVERVIEW {
+            dataDescription.text = overview
+        } else {
+            dataDescription.text = "No data"
         }
     }
+    
+    func checkDate(_ data: String) -> String {
+        if data.characters.count > 3 {
+            return data.substring(to: (data.index(data.startIndex, offsetBy: 4)))
+        } else {
+            return "????"
+        }
+    }
+    
     
     func getGenresText(_ genreIds: [Int]) -> String {
         var genresListText = ""

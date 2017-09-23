@@ -1,12 +1,6 @@
-//
-//  Loading.swift
-//  movieapp
-//
-//  Created by Richard Pap on 2017. 04. 17..
-//  Copyright © 2017. Richard Pap. All rights reserved.
-//
 
 import UIKit
+import SnapKit
 
 extension UIViewController {
     
@@ -16,55 +10,53 @@ extension UIViewController {
     func showLoading() {
         let container = UIView(frame: .zero)
         let progress = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        let layoutConstraints = [
-            container.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            container.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            container.widthAnchor.constraint(equalTo: view.widthAnchor),
-            container.heightAnchor.constraint(equalTo: view.heightAnchor),
-            
-            progress.centerXAnchor.constraint(equalTo: container.centerXAnchor),
-            progress.centerYAnchor.constraint(equalTo: container.centerYAnchor),
-            progress.widthAnchor.constraint(lessThanOrEqualTo: container.widthAnchor, multiplier: 0.5, constant: 0),
-            progress.heightAnchor.constraint(lessThanOrEqualTo: container.heightAnchor)
-        ]
         
         view.addSubview(container)
-        
         container.addSubview(progress)
         container.tag = UIViewController.TAG
-        
+        container.backgroundColor = .white
         progress.frame = .zero
         progress.tag = UIViewController.PROGRESS_TAG
         
-        container.translatesAutoresizingMaskIntoConstraints = false
-        container.backgroundColor = .white
-        progress.translatesAutoresizingMaskIntoConstraints = false
+        container.snp.makeConstraints { (make) -> Void in
+            make.width.equalTo(view)
+            make.height.equalTo(view)
+            make.centerX.equalTo(view)
+            make.centerY.equalTo(view)
+        }
         
-        NSLayoutConstraint.activate(layoutConstraints)
-
+        progress.snp.makeConstraints { (make) -> Void in
+            make.width.equalTo(container)
+            make.height.equalTo(container)
+            make.centerX.lessThanOrEqualTo(container)
+            make.centerY.equalTo(container)
+        }
+        
         progress.startAnimating()
     }
 
     func hideLoading() {
         guard
             let container = view.viewWithTag(UIViewController.TAG),
-            let progress = view.viewWithTag(UIViewController.PROGRESS_TAG) as? UIActivityIndicatorView else {
+            let progress = view.viewWithTag(UIViewController.PROGRESS_TAG) as? UIActivityIndicatorView
+        else {
             return
         }
         
-        let layoutConstraints = [
-            container.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            container.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            container.widthAnchor.constraint(equalTo: view.widthAnchor),
-            container.heightAnchor.constraint(equalTo: view.heightAnchor),
-            
-            progress.centerXAnchor.constraint(equalTo: container.centerXAnchor),
-            progress.centerYAnchor.constraint(equalTo: container.centerYAnchor),
-            progress.widthAnchor.constraint(lessThanOrEqualTo: container.widthAnchor, multiplier: 0.5, constant: 0),
-            progress.heightAnchor.constraint(lessThanOrEqualTo: container.heightAnchor)
-        ]
+        container.snp.makeConstraints { (make) -> Void in
+            make.width.equalTo(view)
+            make.height.equalTo(view)
+            make.centerX.equalTo(view)
+            make.centerY.equalTo(view)
+        }
         
-        NSLayoutConstraint.deactivate(layoutConstraints)
+        progress.snp.makeConstraints { (make) -> Void in
+            make.width.equalTo(container)
+            make.height.equalTo(container)
+            make.centerX.lessThanOrEqualTo(container).multipliedBy(0.5).offset(0)
+            make.centerY.equalTo(container)
+        }
+
         
         progress.stopAnimating()
         container.removeFromSuperview()

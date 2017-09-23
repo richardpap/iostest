@@ -64,12 +64,11 @@ class MovieListViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let index = indexPath.row
         let cell: MovieListViewCell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath ) as! MovieListViewCell
         
         if IS_DATA_LOADED {
-            let index = indexPath.row
-            cell.bind(moviesData, index)
+            cell.bind(moviesData[index])
         }
         
         return cell

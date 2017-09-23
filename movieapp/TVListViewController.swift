@@ -59,12 +59,11 @@ class TVListViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let index = indexPath.row
         let cell: TVListViewCell = tableView.dequeueReusableCell(withIdentifier: "TVCell", for: indexPath ) as! TVListViewCell
         
         if IS_DATA_LOADED {
-            let index = indexPath.row
-            cell.bind(tvData, index)
+            cell.bind(tvData[index])
         }
         
         return cell

@@ -1,34 +1,35 @@
-//
-//  MovieDetailViewController.swift
-//  movieapp
-//
-//  Created by Richard Pap on 2017. 04. 11..
-//  Copyright © 2017. Richard Pap. All rights reserved.
-//
 
 import UIKit
 import Alamofire
 import ObjectMapper
 import Kingfisher
-import PureLayout
+import SnapKit
 
 
 class MovieDetailsViewController: UIViewController {
     
-    private let detailsView = DetailsView(frame: CGRect.zero)
-    private let movieDetailsPresenter = MovieDetailsPresenter(service: MovieDetailsService.getInstance())
+    lazy var detailsView = DetailsView()
+    let movieDetailsPresenter = MovieDetailsPresenter(service: MovieDetailsService.getInstance())
     var MOVIE_ID = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         showLoading()
-        
-        view.addSubview(detailsView)
         
         movieDetailsPresenter.attachView(view: self)
         movieDetailsPresenter.setId(MOVIE_ID)
         movieDetailsPresenter.getData()
+        
+        view.addSubview(detailsView)
+        
+        detailsView.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(view)
+            make.right.equalTo(view)
+            make.top.equalTo(view).offset(60)
+            make.bottom.equalTo(view)
+        }
+        
+        detailsView.setView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,8 +39,8 @@ class MovieDetailsViewController: UIViewController {
 
     
     func setData(_ data: MovieDetails) {
-        hideLoading()
         displayData(data)
+        hideLoading()
     }
     
     

@@ -26,7 +26,6 @@ class PreloaderViewController: UIViewController {
         })
         
         oHandler.subscribe(onNext:{ (GenresList, MovieImages) in
-            print("Preloader ftw")
             GenresService.getInstance().setData(GenresList)
             ImageloaderService.getInstance().setData(MovieImages)
             self.loadApp()

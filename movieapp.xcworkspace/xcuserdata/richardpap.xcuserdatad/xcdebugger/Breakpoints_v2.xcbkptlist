@@ -10,11 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "movieapp/MovieListViewController.swift"
-            timestampString = "513624104.860523"
+            timestampString = "527883417.483366"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "10"
-            endingLineNumber = "10">
+            endingLineNumber = "10"
+            landmarkName = "unknown"
+            landmarkType = "0">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -275,11 +277,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "movieapp/SearchListViewCell.swift"
-            timestampString = "526158159.618344"
+            timestampString = "527782089.541353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "SearchListViewCell"
             landmarkType = "3">
          </BreakpointContent>
@@ -291,11 +293,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "movieapp/SearchListViewCell.swift"
-            timestampString = "526034826.418151"
+            timestampString = "527782089.5431"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "bind(_:)"
             landmarkType = "7">
          </BreakpointContent>
