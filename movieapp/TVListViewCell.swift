@@ -141,7 +141,8 @@ class TVListViewCell: UITableViewCell {
     
     func checkDate(_ data: String) -> String {
         if data.characters.count > 3 {
-            return data.substring(to: (data.index(data.startIndex, offsetBy: 4)))
+            let index = data.index(data.startIndex, offsetBy: 4)
+            return String(data[..<index])
         } else {
             return "????"
         }
