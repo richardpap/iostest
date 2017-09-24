@@ -18,7 +18,7 @@ class MovieListViewController: UITableViewController {
     var IS_DATA_LOADED = false
     var moviesData = [MovieList]()
 
-    private let moviesListPresenter = MovieListPresenter(service: MovieListService.getInstance())
+    private let moviesListPresenter = MovieListPresenter(service: MovieListService.shared())
     
     override func viewDidLoad() {
         super.viewDidLoad()

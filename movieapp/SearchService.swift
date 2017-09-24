@@ -6,13 +6,13 @@ import RxSwift
 
 class SearchService {
     
-    static let instance = SearchService()
-    let params = Parameters.getInstance()
+    static let sharedInstance = SearchService()
+    let params = Parameters.shared()
     private var SEARCH_URL: String = ""
     
     
-    static func getInstance() -> SearchService {
-        return instance
+    static func shared() -> SearchService {
+        return sharedInstance
     }
     
     func setKeywords(_ keywords: String) {
@@ -31,7 +31,7 @@ class SearchService {
     
     let getTopListData = Observable<[SearchListData]>.create { (observer) -> Disposable in
         let keywords = "aliens"
-        let params = Parameters.getInstance()
+        let params = Parameters.shared()
         
         DispatchQueue.global(qos: .default).async {
             let TOPLIST_URL = params.HOST + "movie/popular?api_key=" + params.API_KEY + "&language=" +  params.LANG

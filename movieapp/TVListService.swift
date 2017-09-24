@@ -2,13 +2,13 @@
 import UIKit
 import Alamofire
 
-class TVListService {
+final class TVListService {
     
-    static let instance = TVListService()
-    let params = Parameters.getInstance()
+    static let sharedInstance = TVListService()
+    let params = Parameters.shared()
     
-    static func getInstance() -> TVListService {
-        return instance
+    static func shared() -> TVListService {
+        return sharedInstance
     }
     
     func loadData(callBack:@escaping([TVList]) -> Void) {

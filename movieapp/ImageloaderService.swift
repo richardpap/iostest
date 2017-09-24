@@ -4,22 +4,24 @@ import Alamofire
 import RxCocoa
 import RxSwift
 
-class ImageloaderService {
+final class ImageloaderService {
     
-    static let instance = ImageloaderService()
+    static let sharedInstance = ImageloaderService()
     var IMG_HOST = ""
     var IMAGE_SIZE_LIST = [String]()
-    var params = Parameters.getInstance()
+    var params = Parameters.shared()
     
-    static func getInstance() -> ImageloaderService {
-        return instance
+    private init() { }
+    
+    static func shared() -> ImageloaderService {
+        return sharedInstance
     }
     
     let loadImageData = Observable<MovieImages>.create {(observer) -> Disposable in
         
         DispatchQueue.global(qos: .default).async {
             
-            let params = Parameters.getInstance()
+            let params = Parameters.shared()
             let URL =  params.HOST  + "configuration?api_key=" + params.API_KEY
             let request = Alamofire.request(URL)
             

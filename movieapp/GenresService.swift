@@ -4,21 +4,23 @@ import Alamofire
 import RxCocoa
 import RxSwift
 
-class GenresService {
+final class GenresService {
     
-    static let instance = GenresService()
-    let params = Parameters.getInstance()
+    static let sharedInstance = GenresService()
+    let params = Parameters.shared()
     var GENRES_LIST = [GenresList]()
     
-    static func getInstance() -> GenresService {
-        return instance
+    private init() { }
+    
+    static func shared() -> GenresService {
+        return sharedInstance
     }
     
     let loadGenresData = Observable<[GenresList]>.create {(observer) -> Disposable in
         
         DispatchQueue.global(qos: .default).async {
             
-            let params = Parameters.getInstance()
+            let params = Parameters.shared()
             let GENRES_URL = params.HOST + "genre/movie/list?api_key=" + params.API_KEY + "&language=" + params.LANG
             let request = Alamofire.request(GENRES_URL)
             
@@ -37,5 +39,26 @@ class GenresService {
     
     func setData(_ list: [GenresList]) {
         self.GENRES_LIST = list
+    }
+    
+    func getGenresText(_ genreIds: [Int]) -> String {
+        var genresListText = ""
+        var filteredArray = [GenresList]()
+        
+        for item in genreIds {
+            filteredArray += GENRES_LIST.filter({$0.ID == item})
+        }
+        
+        for item in filteredArray {
+            if let genreName = item.NAME {
+                if (genresListText.characters.count != 0) {
+                    genresListText += ", "
+                }
+                
+                genresListText += genreName
+            }
+        }
+        
+        return genresListText
     }
 }

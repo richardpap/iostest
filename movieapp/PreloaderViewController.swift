@@ -18,16 +18,16 @@ class PreloaderViewController: UIViewController {
         super.viewDidLoad()
         showLoading()
         
-        let genresData = GenresService.getInstance().loadGenresData
-        let imgData = ImageloaderService.getInstance().loadImageData
+        let genresData = GenresService.shared().loadGenresData
+        let imgData = ImageloaderService.shared().loadImageData
         
         let oHandler = Observable.zip(genresData, imgData, resultSelector: { (GenresList, MovieImages) in
             return (GenresList, MovieImages)
         })
         
         oHandler.subscribe(onNext:{ (GenresList, MovieImages) in
-            GenresService.getInstance().setData(GenresList)
-            ImageloaderService.getInstance().setData(MovieImages)
+            GenresService.shared().setData(GenresList)
+            ImageloaderService.shared().setData(MovieImages)
             self.loadApp()
         }).addDisposableTo(disposeBag)
 

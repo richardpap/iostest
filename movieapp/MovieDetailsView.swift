@@ -110,15 +110,14 @@ class DetailsView: UIView {
             make.right.equalTo(contentView)
         }
         
-        dataRated.font = dataGenres.font.withSize(14)
-        dataRated.font = dataGenres.font.withSize(14)
-        dataRuntime.font = dataGenres.font.withSize(14)
-        dataReleased.font = dataGenres.font.withSize(14)
+        dataRated.font = dataRated.font.withSize(14)
+        dataRuntime.font = dataRuntime.font.withSize(14)
+        dataReleased.font = dataReleased.font.withSize(14)
     }
     
     
     func setDescriptionLayout() {
-        dataDescription.font = dataGenres.font.withSize(14)
+        dataDescription.font = dataDescription.font.withSize(14)
         dataDescription.numberOfLines = 0
         dataDescription.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(contentView)
@@ -129,7 +128,7 @@ class DetailsView: UIView {
     
     func bind(_ movieData: MovieDetails) {
         if let imgPath = movieData.BACKDROP_PATH {
-            let imgURL = ImageloaderService.getInstance().IMG_HOST + ImageloaderService.getInstance().IMAGE_SIZE_LIST[2] + imgPath
+            let imgURL = ImageloaderService.shared().IMG_HOST + ImageloaderService.shared().IMAGE_SIZE_LIST[2] + imgPath
             let imgResource = ImageResource(downloadURL: URL(string: imgURL)!, cacheKey: imgURL)
             dataImage.kf.setImage(with: imgResource)
             dataImage.contentMode = .scaleAspectFill
@@ -149,7 +148,9 @@ class DetailsView: UIView {
             dataRated.text = "Rated: " + String(describing: rate)
         }
         if let releaseDate = movieData.RELEASE_DATE {
-            dataReleased.text = "Released: " + releaseDate.substring(to: (releaseDate.index(releaseDate.startIndex, offsetBy: 4)))
+            let index = releaseDate.index(releaseDate.startIndex, offsetBy: 4)
+            let year = releaseDate[..<index]
+            dataReleased.text = "Released: " + year
         }
         if let genreIds = movieData.GENRES {
             var genresListText = ""

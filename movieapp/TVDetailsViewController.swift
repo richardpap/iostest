@@ -11,19 +11,27 @@ import UIKit
 class TVDetailsViewController: UIViewController {
     
     private let detailsView = TVDetailsView(frame: CGRect.zero)
-    private let tvDetailsPresenter = TVDetailsPresenter(service: TVDetailsService.getInstance())
+    private let tvDetailsPresenter = TVDetailsPresenter(service: TVDetailsService.shared())
     var TV_ID = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         showLoading()
-        
-        view.addSubview(detailsView)
         
         tvDetailsPresenter.attachView(view: self)
         tvDetailsPresenter.setId(TV_ID)
         tvDetailsPresenter.getData()
+        
+        view.addSubview(detailsView)
+        
+        detailsView.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(view)
+            make.right.equalTo(view)
+            make.top.equalTo(view).offset(60)
+            make.bottom.equalTo(view)
+        }
+        
+        detailsView.setView()
 
         // Do any additional setup after loading the view.
     }

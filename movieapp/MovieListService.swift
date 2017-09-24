@@ -2,13 +2,13 @@
 import UIKit
 import Alamofire
 
-class MovieListService {
-    
-    static let instance = MovieListService()
-    let params = Parameters.getInstance()
+final class MovieListService {
+
+    static let sharedInstance = MovieListService()
+    let params = Parameters.shared()
         
-    static func getInstance() -> MovieListService {
-        return instance
+    static func shared() -> MovieListService {
+        return sharedInstance
     }
     
     func loadData(callBack:@escaping([MovieList]) -> Void) {

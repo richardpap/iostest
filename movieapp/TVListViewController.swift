@@ -13,7 +13,7 @@ class TVListViewController: UITableViewController {
     var IS_DATA_LOADED = false
     var tvData = [TVList]()
     
-    private let tvListPresenter = TVListPresenter(service: TVListService.getInstance())
+    private let tvListPresenter = TVListPresenter(service: TVListService.shared())
     
 
     override func viewDidLoad() {

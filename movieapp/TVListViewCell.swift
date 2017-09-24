@@ -55,7 +55,7 @@ class TVListViewCell: UITableViewCell {
             make.width.equalTo(24)
         }
         
-        dataRate.font = dataTitle.font.withSize(18)
+        dataRate.font = dataRate.font.withSize(18)
         dataRate.textAlignment = .right
         dataRate.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(contentView.snp.top).offset(15)
@@ -80,7 +80,7 @@ class TVListViewCell: UITableViewCell {
             make.width.equalTo(24)
         }
         
-        dataYear.font = dataGenres.font.withSize(14)
+        dataYear.font = dataYear.font.withSize(14)
         dataYear.textAlignment = .right
         dataYear.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(contentView.snp.top).offset(40)
@@ -89,7 +89,7 @@ class TVListViewCell: UITableViewCell {
             make.width.equalTo(50)
         }
         
-        dataDescription.font = dataGenres.font.withSize(14)
+        dataDescription.font = dataDescription.font.withSize(14)
         dataDescription.numberOfLines = 0
         dataDescription.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(contentView.snp.top).offset(80)
@@ -107,13 +107,13 @@ class TVListViewCell: UITableViewCell {
     func bind(_ item: TVList) {
         
         if let imgPath = item.POSTER_PATH {
-            let imgURL = ImageloaderService.getInstance().IMG_HOST + ImageloaderService.getInstance().IMAGE_SIZE_LIST[0] + imgPath
+            let imgURL = ImageloaderService.shared().IMG_HOST + ImageloaderService.shared().IMAGE_SIZE_LIST[0] + imgPath
             let imgResource = ImageResource(downloadURL: URL(string: imgURL)!, cacheKey: imgURL)
             dataImage.kf.setImage(with: imgResource)
             dataImage.contentMode = .scaleAspectFill
         }
         if let genreIds = item.GENRE_IDS {
-            dataGenres.text = getGenresText(genreIds)
+            dataGenres.text = GenresService.shared().getGenresText(genreIds)
         } else {
             dataGenres.text = "No data"
         }
@@ -145,27 +145,5 @@ class TVListViewCell: UITableViewCell {
         } else {
             return "????"
         }
-    }
-    
-    
-    func getGenresText(_ genreIds: [Int]) -> String {
-        var genresListText = ""
-        var filteredArray = [GenresList]()
-        
-        for item in genreIds {
-            filteredArray += GenresService.getInstance().GENRES_LIST.filter({$0.ID == item})
-        }
-        
-        for item in filteredArray {
-            if let genreName = item.NAME {
-                if (genresListText.characters.count != 0) {
-                    genresListText += ", "
-                }
-                
-                genresListText += genreName
-            }
-        }
-        
-        return genresListText
     }
 }

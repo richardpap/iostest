@@ -9,7 +9,7 @@ import SnapKit
 class MovieDetailsViewController: UIViewController {
     
     lazy var detailsView = DetailsView()
-    let movieDetailsPresenter = MovieDetailsPresenter(service: MovieDetailsService.getInstance())
+    let movieDetailsPresenter = MovieDetailsPresenter(service: MovieDetailsService.shared())
     var MOVIE_ID = 0
     
     override func viewDidLoad() {

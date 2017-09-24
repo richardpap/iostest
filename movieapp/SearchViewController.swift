@@ -16,7 +16,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     private var cellId = "SearchCell"
     private var IS_DATA_LOADED = false
     //binding the presenter
-    let searchPresenter = SearchPresenter(service: SearchService.getInstance())
+    let searchPresenter = SearchPresenter(service: SearchService.shared())
     //pass nil if you wish to display search results in the same view that you are searching.
     private var searchController = UISearchController(searchResultsController: nil)
     //private var resultsController = UITableViewController()
@@ -71,7 +71,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
     func setPresenter() {
         searchPresenter.attachView(view: self)
         //searchPresenter.getTopList()
-        SearchService.getInstance().getTopListData.subscribe(onNext:{ (responseData) in
+        SearchService.shared().getTopListData.subscribe(onNext:{ (responseData) in
             self.searchData = responseData
             print("RXLife::::::::::::::::::::::")
             self.IS_DATA_LOADED = true

@@ -2,14 +2,14 @@
 import UIKit
 import Alamofire
 
-class MovieDetailsService {
+final class MovieDetailsService {
     
-    static let instance = MovieDetailsService()
-    let params = Parameters.getInstance()
+    static let sharedInstance = MovieDetailsService()
+    let params = Parameters.shared()
     var MOVIE_ID = 0
     
-    static func getInstance() -> MovieDetailsService {
-        return instance
+    static func shared() -> MovieDetailsService {
+        return sharedInstance
     }
     
     func setId(_ movieId: Int) {

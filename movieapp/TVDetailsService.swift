@@ -2,14 +2,14 @@
 import Foundation
 import Alamofire
 
-class TVDetailsService {
-    
-    static let instance = TVDetailsService()
-    let params = Parameters.getInstance()
+final class TVDetailsService {
+
+    static let sharedInstance = TVDetailsService()
+    let params = Parameters.shared()
     var TV_ID = 0
     
-    static func getInstance() -> TVDetailsService {
-        return instance
+    static func shared() -> TVDetailsService {
+        return sharedInstance
     }
     
     func setId(_ tvId: Int) {

@@ -14,21 +14,19 @@ class TVDetailsView: UIView {
     var dataReleased = UILabel()
     var dataRated = UILabel()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    func setView() {
+        //self.superview = sw
         backgroundColor = .white
-        translatesAutoresizingMaskIntoConstraints = false
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        paramsView.translatesAutoresizingMaskIntoConstraints = false
-        dataImage.translatesAutoresizingMaskIntoConstraints = false
-        dataTitle.translatesAutoresizingMaskIntoConstraints = false
-        dataGenres.translatesAutoresizingMaskIntoConstraints = false
-        dataDescription.translatesAutoresizingMaskIntoConstraints = false
-        
         addSubview(scrollView)
+        
         scrollView.addSubview(contentView)
         scrollView.addSubview(dataImage)
         
@@ -40,110 +38,124 @@ class TVDetailsView: UIView {
         paramsView.addArrangedSubview(dataRated)
         paramsView.addArrangedSubview(dataReleased)
         
-        contentView.backgroundColor = .yellow
+        setViewLayout()
+        setContentLayout()
+        setImgLayout()
+        setTitleLayout()
+        setParamsLayout()
+        setDescriptionLayout()
+    }
+    
+    
+    func setViewLayout() {
+        scrollView.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(self.superview!)
+            make.right.equalTo(self.superview!)
+            make.top.equalTo(self.superview!)
+            make.bottom.equalTo(self.superview!)
+        }
+    }
+    
+    func setImgLayout() {
+        dataImage.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(scrollView)
+            make.right.equalTo(scrollView)
+            make.top.equalTo(scrollView)
+            make.width.equalTo(scrollView)
+            make.height.equalTo(400)
+        }
+    }
+    
+    
+    func setContentLayout() {
         contentView.axis = .vertical
         contentView.alignment = .fill
         contentView.distribution = .fill
         contentView.spacing = 10
+        contentView.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(scrollView).offset(10)
+            make.right.equalTo(scrollView).offset(10)
+            make.top.equalTo(dataImage.snp.bottom).offset(10)
+            make.bottom.equalTo(scrollView)
+            make.width.equalTo(scrollView)
+        }
+    }
+    
+    
+    func setTitleLayout() {
+        dataTitle.font = dataTitle.font.withSize(24)
+        dataTitle.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(contentView)
+            make.right.equalTo(contentView)
+        }
+    }
+    
+    func setParamsLayout() {
+        dataGenres.font = dataGenres.font.withSize(12)
+        dataGenres.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(contentView)
+            make.right.equalTo(contentView)
+        }
         
         paramsView.axis = .horizontal
         paramsView.alignment = .fill
         paramsView.distribution = .equalSpacing
+        paramsView.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(contentView)
+            make.right.equalTo(contentView)
+        }
         
-        dataTitle.font = dataTitle.font.withSize(24)
-        dataGenres.font = dataGenres.font.withSize(12)
-        dataRated.font = dataGenres.font.withSize(14)
-        dataRated.font = dataGenres.font.withSize(14)
-        dataReleased.font = dataGenres.font.withSize(14)
-        dataDescription.font = dataGenres.font.withSize(14)
+        dataRated.font = dataRated.font.withSize(14)
+        dataReleased.font = dataReleased.font.withSize(14)
+    }
+    
+    
+    func setDescriptionLayout() {
+        dataDescription.font = dataDescription.font.withSize(14)
         dataDescription.numberOfLines = 0
+        dataDescription.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(contentView)
+            make.right.equalTo(contentView)
+            //make.bottom.equalTo(contentView).offset(-60)
+        }
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    override func updateConstraints() {
-        guard let superview = self.superview else { return }
-        
-        NSLayoutConstraint.activate([
-
-                leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-                trailingAnchor.constraint(equalTo: superview.trailingAnchor),
-                topAnchor.constraint(equalTo: superview.topAnchor, constant: 60),
-                bottomAnchor.constraint(equalTo: superview.bottomAnchor),
-
-                scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-                scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-                scrollView.topAnchor.constraint(equalTo: topAnchor),
-                scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
-                
-                dataImage.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-                dataImage.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-                dataImage.topAnchor.constraint(equalTo: scrollView.topAnchor),
-                dataImage.heightAnchor.constraint(equalToConstant: 400),
-                dataImage.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-
-                contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-                contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-                contentView.topAnchor.constraint(equalTo: dataImage.bottomAnchor, constant: 10),
-                contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-                contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-
-                dataTitle.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 10),
-                dataTitle.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -10),
-
-                dataGenres.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 10),
-                dataGenres.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -10),
-
-                paramsView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 10),
-                paramsView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -10),
-
-                dataDescription.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 10),
-                dataDescription.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -10),
-                dataDescription.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -60)
-            
-            
-            ])
-        
-        super.updateConstraints()
-        
-    }
-    
     
     func bind(_ tvData: TVDetails) {
         if let imgPath = tvData.BACKDROP_PATH {
-            let imgURL = ImageloaderService.getInstance().IMG_HOST + ImageloaderService.getInstance().IMAGE_SIZE_LIST[2] + imgPath
+            let imgURL = ImageloaderService.shared().IMG_HOST + ImageloaderService.shared().IMAGE_SIZE_LIST[2] + imgPath
             let imgResource = ImageResource(downloadURL: URL(string: imgURL)!, cacheKey: imgURL)
             dataImage.kf.setImage(with: imgResource)
             dataImage.contentMode = .scaleAspectFill
             dataImage.clipsToBounds = true
         }
         
-        if
-            let title = tvData.NAME,
-            let overview = tvData.OVERVIEW,
-            let rate = tvData.VOTE_AVERAGE,
-            let releaseDate = tvData.FIRST_AIR_DATE,
-            let genreIds = tvData.GENRES {
-                dataTitle.text = title
-                dataDescription.text = overview
-                dataReleased.text = "First aired: " + releaseDate.substring(to: (releaseDate.index(releaseDate.startIndex, offsetBy: 4)))
-                dataRated.text = "Rated: " + String(describing: rate)
+        if let title = tvData.NAME {
+            dataTitle.text = title
+        }
+        if let overview = tvData.OVERVIEW {
+            dataDescription.text = overview
+        }
+        if let rate = tvData.VOTE_AVERAGE {
+            dataRated.text = "Rated: " + String(describing: rate)
+        }
+        if let releaseDate = tvData.FIRST_AIR_DATE {
+            let index = releaseDate.index(releaseDate.startIndex, offsetBy: 4)
+            let year = releaseDate[..<index]
+            dataReleased.text = "First aired: " + year
+        }
+        if let genreIds = tvData.GENRES {
+            var genresListText = ""
             
-                var genresListText = ""
-            
-                for item in genreIds {
-                    if (genresListText.characters.count != 0) {
-                        genresListText += ", "
-                    }
-                    if let genreName = item.NAME {
-                        genresListText += genreName
-                    }
+            for item in genreIds {
+                if (genresListText.characters.count != 0) {
+                    genresListText += ", "
                 }
+                if let genreName = item.NAME {
+                    genresListText += genreName
+                }
+            }
             
-                dataGenres.text = genresListText
-            
+            dataGenres.text = genresListText
         }
     }
 }
