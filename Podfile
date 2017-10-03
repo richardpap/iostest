@@ -10,8 +10,7 @@ target 'movieapp' do
     pod 'Kingfisher'
     pod 'ObjectMapper'
     pod 'AlamofireObjectMapper'
-    pod 'PureLayout'
-    pod 'RxSwift'
-    pod 'RxCocoa'
+    pod 'RxSwift', :git => 'https://github.com/ReactiveX/RxSwift.git', :branch => 'rxswift4.0-swift4.0'
+    pod 'RxCocoa', :git => 'https://github.com/ReactiveX/RxSwift.git', :branch => 'rxswift4.0-swift4.0'
     pod 'SnapKit'
 end
