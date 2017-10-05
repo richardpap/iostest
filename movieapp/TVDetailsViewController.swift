@@ -31,7 +31,7 @@ class TVDetailsViewController: UIViewController {
             make.bottom.equalTo(view)
         }
         
-        detailsView.setView()
+        detailsView.setView(self.view)
 
         // Do any additional setup after loading the view.
     }

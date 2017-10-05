@@ -41,6 +41,8 @@ class SearchService {
                 if let responseData = response.result.value {
                     observer.onNext(responseData)
                     observer.onCompleted()
+                } else {
+                    observer.onError("Error" as! Error)
                 }
             }
         }

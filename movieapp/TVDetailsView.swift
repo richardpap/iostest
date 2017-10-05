@@ -13,6 +13,7 @@ class TVDetailsView: UIView {
     var dataDescription = UILabel()
     var dataReleased = UILabel()
     var dataRated = UILabel()
+    unowned var sw: UIView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,8 +23,8 @@ class TVDetailsView: UIView {
         super.init(coder: aDecoder)
     }
     
-    func setView() {
-        //self.superview = sw
+    func setView(_ view: UIView) {
+        self.sw = view
         backgroundColor = .white
         addSubview(scrollView)
         
@@ -49,10 +50,10 @@ class TVDetailsView: UIView {
     
     func setViewLayout() {
         scrollView.snp.makeConstraints { (make) -> Void in
-            make.left.equalTo(self.superview!)
-            make.right.equalTo(self.superview!)
-            make.top.equalTo(self.superview!)
-            make.bottom.equalTo(self.superview!)
+            make.left.equalTo(self.sw)
+            make.right.equalTo(self.sw)
+            make.top.equalTo(self.sw)
+            make.bottom.equalTo(self.sw).inset(60)
         }
     }
     
@@ -74,10 +75,9 @@ class TVDetailsView: UIView {
         contentView.spacing = 10
         contentView.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(scrollView).offset(10)
-            make.right.equalTo(scrollView).offset(10)
+            make.right.equalTo(scrollView).offset(-10)
             make.top.equalTo(dataImage.snp.bottom).offset(10)
             make.bottom.equalTo(scrollView)
-            make.width.equalTo(scrollView)
         }
     }
     
@@ -116,7 +116,7 @@ class TVDetailsView: UIView {
         dataDescription.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(contentView)
             make.right.equalTo(contentView)
-            //make.bottom.equalTo(contentView).offset(-60)
+            make.bottom.equalTo(contentView)
         }
     }
     

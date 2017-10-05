@@ -29,7 +29,7 @@ class MovieDetailsViewController: UIViewController {
             make.bottom.equalTo(view)
         }
         
-        detailsView.setView()
+        detailsView.setView(self.view)
     }
 
     override func didReceiveMemoryWarning() {
