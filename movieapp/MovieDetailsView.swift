@@ -26,6 +26,10 @@ class DetailsView: UIView {
         super.init(coder: aDecoder)
     }
     
+    deinit {
+        print("Detailsview destroyed")
+    }
+    
     override func updateConstraints() {
         super.updateConstraints()
     }

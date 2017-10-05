@@ -23,6 +23,10 @@ class TVDetailsView: UIView {
         super.init(coder: aDecoder)
     }
     
+    deinit {
+        print("Detailsview destroyed")
+    }
+    
     func setView(_ view: UIView) {
         self.sw = view
         backgroundColor = .white

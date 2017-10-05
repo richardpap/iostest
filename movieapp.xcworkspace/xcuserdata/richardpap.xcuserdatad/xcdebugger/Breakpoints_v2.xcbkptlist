@@ -277,11 +277,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "movieapp/SearchListViewCell.swift"
-            timestampString = "527977776.651209"
+            timestampString = "528907134.690567"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "SearchListViewCell"
             landmarkType = "3">
          </BreakpointContent>
@@ -293,11 +293,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "movieapp/SearchListViewCell.swift"
-            timestampString = "527977776.651609"
+            timestampString = "528907134.690907"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "bind(_:)"
             landmarkType = "7">
          </BreakpointContent>

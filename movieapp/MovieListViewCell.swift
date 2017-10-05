@@ -29,13 +29,22 @@ class MovieListViewCell: UITableViewCell {
         contentView.addSubview(dataGenres)
         contentView.addSubview(dataDescription)
         
+        setImgLayout()
+        setTitleLayout()
+        setParamsLayout()
+        setDescriptionLayout()
+    }
+    
+    func setImgLayout() {
         dataImage.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(contentView.snp.top).offset(10)
             make.left.equalTo(contentView.snp.left).offset(10)
             make.height.equalTo(160)
             make.width.equalTo(100)
         }
-        
+    }
+    
+    func setTitleLayout() {
         dataTitle.font = dataTitle.font.withSize(18)
         dataTitle.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(contentView.snp.top).offset(15)
@@ -43,7 +52,9 @@ class MovieListViewCell: UITableViewCell {
             make.right.equalTo(contentView.snp.right).offset(-80)
             make.height.equalTo(24)
         }
-        
+    }
+    
+    func setParamsLayout() {
         starView.image = starImage
         starView.contentMode = .scaleAspectFill
         starView.snp.makeConstraints { (make) -> Void in
@@ -78,7 +89,7 @@ class MovieListViewCell: UITableViewCell {
             make.width.equalTo(24)
         }
         
-        dataYear.font = dataGenres.font.withSize(14)
+        dataYear.font = dataYear.font.withSize(14)
         dataYear.textAlignment = .right
         dataYear.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(contentView.snp.top).offset(40)
@@ -86,7 +97,9 @@ class MovieListViewCell: UITableViewCell {
             make.height.equalTo(24)
             make.width.equalTo(50)
         }
-        
+    }
+    
+    func setDescriptionLayout() {
         dataDescription.font = dataDescription.font.withSize(14)
         dataDescription.numberOfLines = 0
         dataDescription.snp.makeConstraints { (make) -> Void in
@@ -95,7 +108,6 @@ class MovieListViewCell: UITableViewCell {
             make.right.equalTo(contentView.snp.right).offset(-10)
             make.height.equalTo(80)
         }
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
